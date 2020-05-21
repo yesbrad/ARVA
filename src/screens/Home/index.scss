@@ -1,1 +1,36 @@
 @import '../../styles/config.scss';
+
+.banner-container {
+	width: 100%;
+	// @include DBorder;
+	height: 500px;
+	@include BackgroundImageCovered('../../images/BannerImages/Banner1.png');
+}
+
+.brands-container {
+	background: gray;
+	@include FlexCenter;
+	height: 5rem;
+
+	img {
+		width: auto;
+		height: 30px;
+		margin: 0 2rem;
+	}
+}
+
+.about-container {
+	padding: 0 30rem;
+
+	.about-pargraph-container {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		// @include DBorder;
+
+		p {
+			width: 46%;
+			line-height: 1.5rem;
+		}
+	}
+}

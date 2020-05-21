@@ -9,3 +9,10 @@ $primaryColor : orange;
 @mixin DBorder {
 	border: 1px solid red;
 }
+
+@mixin BackgroundImageCovered ($url) {
+	background-image: url($url);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
