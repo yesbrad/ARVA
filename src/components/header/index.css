@@ -1,0 +1,107 @@
+.header-container {
+  height: 15rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.header-container .arva-logo {
+  height: 100%;
+  width: 20rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.header-container .arva-logo img {
+  width: 70%;
+  height: 70%;
+  padding: 1rem;
+}
+
+.header-container .right-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.header-container .right-container #circleDivider {
+  width: 40rem;
+  height: 40rem;
+  border-top-left-radius: 80rem;
+  border-bottom-left-radius: 80rem;
+  background: orange;
+  position: absolute;
+  z-index: -3;
+}
+
+.header-container .right-container #content-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-right: 5rem;
+  width: 14rem;
+}
+
+.header-container .right-container #content-wrapper button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+}
+
+.header-container .right-container #content-wrapper #contact-button {
+  background: white;
+  height: 50px;
+  width: 150px;
+  border-radius: 50px;
+}
+
+.navbar-container {
+  background: darkgray;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 40px;
+}
+
+.navbar-container div {
+  margin: 0 1em;
+  color: white;
+}
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,11 @@
+$primaryColor : orange;
+
+@mixin FlexCenter {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@mixin DBorder {
+	border: 1px solid red;
+}
