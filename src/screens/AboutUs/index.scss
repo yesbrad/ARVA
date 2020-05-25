@@ -27,10 +27,16 @@
 .about-container {
 	@include FlexCenter;
 	margin-bottom: 3rem;
+	flex-direction: column;
+	// @include DBorder;
+
+	h2 {
+		margin-top: 2rem;
+		width: 100%;
+	}
 
 	.about-padding-container {
 		width: 50%;
-		// @include DBorder;
 		
 		.about-pargraph-container {
 			display: flex;

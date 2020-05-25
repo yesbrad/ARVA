@@ -67,11 +67,23 @@
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	height: 40px;
+	height: 3em;
 
-	div {
-		margin: 0 1em;
+	#nav-link {
+		// margin: 0 1em;
+		// @include DBorder;
 		color: white;
+		font-size: 1em;
+		height: 100%;
+		text-align: center;
+		@include FlexCenter;
+		width: 10%;
+		transition: background-color 200ms;
+		text-decoration: none;
+	}
+
+	#nav-link:hover {
+		background-color: $primaryColor;
 	}
 }
 

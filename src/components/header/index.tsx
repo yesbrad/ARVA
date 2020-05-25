@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.css';
+import { Link } from 'react-router-dom';
 
 class Header extends React.Component {
 	render(){
@@ -18,10 +19,11 @@ class Header extends React.Component {
 					</div>
 				</div>
 				<nav className="navbar-container">
-					<div>HOME</div>
-					<div>ABOUT</div>
-					<div>BRANDS</div>
-					<div>CONTACT</div>
+					<Link id="nav-link" to="/">HOME</Link>
+					<Link id="nav-link" to="/about-us">ABOUT</Link>
+					<Link id="nav-link" to="/brands">BRANDS</Link>
+					{/* <Link id="nav-link" to="/stocklists">STOCKLISTS</Link> */}
+					<Link id="nav-link" to="/contact">CONTACT</Link>
 				</nav>
 			</div>
 		)

@@ -1,0 +1,19 @@
+@import '../../styles/config.scss';
+
+.footer-container {
+	background: $primaryColor;
+	height: 20rem;
+	@include FlexCenter;
+	flex-direction: column;
+	color: white;
+
+	nav {
+		@include FlexCenter;
+		flex-direction: column;
+
+		div {
+			font-size: 1.3em;
+			margin-bottom: 10px;
+		}
+	}
+}

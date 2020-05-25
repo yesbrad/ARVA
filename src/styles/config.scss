@@ -1,4 +1,10 @@
-$primaryColor : orange;
+
+// VARIABLES
+
+$primaryColor : rgb(248, 161, 0);
+$mobileSize : 1000px;
+$tabletSize : 1300px;
+// PRESETS
 
 @mixin FlexCenter {
 	display: flex;
@@ -15,4 +21,4 @@ $primaryColor : orange;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
-}
+}	
