@@ -11,8 +11,50 @@ class Brands extends React.Component {
 				<div className='banner-container'>
 
 				</div>
-				<div className="about-container">
-					Brands
+				<div className='brands-container'>
+					<img src={require('../../images/Brands/Layer1.png')} />
+					<img src={require('../../images/Brands/Layer2.png')} />
+					<img src={require('../../images/Brands/Layer3.png')} />
+					<img src={require('../../images/Brands/Layer4.png')} />
+					<img src={require('../../images/Brands/Layer5.png')} />
+					<img src={require('../../images/Brands/Layer6.png')} />
+					<img src={require('../../images/Brands/Layer7.png')} />
+				</div>
+				<div className='brands-container'>
+					<img src={require('../../images/Brands/Layer1.png')} />
+					<img src={require('../../images/Brands/Layer2.png')} />
+					<img src={require('../../images/Brands/Layer3.png')} />
+					<img src={require('../../images/Brands/Layer4.png')} />
+					<img src={require('../../images/Brands/Layer5.png')} />
+					<img src={require('../../images/Brands/Layer6.png')} />
+					<img src={require('../../images/Brands/Layer7.png')} />
+				</div>
+				<div className='brands-container'>
+					<img src={require('../../images/Brands/Layer1.png')} />
+					<img src={require('../../images/Brands/Layer2.png')} />
+					<img src={require('../../images/Brands/Layer3.png')} />
+					<img src={require('../../images/Brands/Layer4.png')} />
+					<img src={require('../../images/Brands/Layer5.png')} />
+					<img src={require('../../images/Brands/Layer6.png')} />
+					<img src={require('../../images/Brands/Layer7.png')} />
+				</div>
+				<div className='brands-container'>
+					<img src={require('../../images/Brands/Layer1.png')} />
+					<img src={require('../../images/Brands/Layer2.png')} />
+					<img src={require('../../images/Brands/Layer3.png')} />
+					<img src={require('../../images/Brands/Layer4.png')} />
+					<img src={require('../../images/Brands/Layer5.png')} />
+					<img src={require('../../images/Brands/Layer6.png')} />
+					<img src={require('../../images/Brands/Layer7.png')} />
+				</div>
+				<div className='brands-container'>
+					<img src={require('../../images/Brands/Layer1.png')} />
+					<img src={require('../../images/Brands/Layer2.png')} />
+					<img src={require('../../images/Brands/Layer3.png')} />
+					<img src={require('../../images/Brands/Layer4.png')} />
+					<img src={require('../../images/Brands/Layer5.png')} />
+					<img src={require('../../images/Brands/Layer6.png')} />
+					<img src={require('../../images/Brands/Layer7.png')} />
 				</div>
 				<Footer />
 			</div>
