@@ -10,19 +10,11 @@ interface IState {
 	stockInfo: StockistInfo[],
 }
 
-interface StockistInfo {
+export interface StockistInfo {
+	ID: string,
 	imageURI: string,
 	title: string
 }
-
-// const info: StockistInfo[] = [
-// 	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Varva'} as StockistInfo,
-// 	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Seaflo'} as StockistInfo,
-// 	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Seaflo'} as StockistInfo,
-// 	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Seaflo'} as StockistInfo,
-// 	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Seaflo'} as StockistInfo,
-// 	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Seaflo'} as StockistInfo,
-// ]
 
 const infoBase: StockistInfo[] = [];
 
@@ -48,7 +40,7 @@ class Stockists extends React.Component<{}, IState> {
 				})
 			})
 		}).catch(err => console.log(err.message));
-	}
+	}	
 
 	render(){
 		return(

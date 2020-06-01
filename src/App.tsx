@@ -3,6 +3,7 @@ import Home from './screens/Home';
 import Stockists from './screens/Stockists';
 import Brands from './screens/Brands';
 import Contact from './screens/Contact';
+import Admin from './screens/Admin';
 
 import {
 	BrowserRouter as Router,
@@ -18,6 +19,7 @@ function App() {
 			<Route path="/brands"><Brands /></Route>
 			<Route path="/stockists"><Stockists /></Route>
 			<Route path="/contact"><Contact /></Route>
+			<Route path="/admin"><Admin /></Route>
 		</Switch>
 	  </Router>
   );

@@ -1,0 +1,7 @@
+@import '../../styles/config.scss';
+
+.admin-stockist-container {
+	@include DBorder;
+	@include FlexCenter;
+	flex-direction: column;
+}
