@@ -20,9 +20,8 @@ class Header extends React.Component {
 				</div>
 				<nav className="navbar-container">
 					<Link id="nav-link" to="/">HOME</Link>
-					<Link id="nav-link" to="/about-us">ABOUT</Link>
+					<Link id="nav-link" to="/stockists">STOCKISTS</Link>
 					<Link id="nav-link" to="/brands">BRANDS</Link>
-					{/* <Link id="nav-link" to="/stocklists">STOCKLISTS</Link> */}
 					<Link id="nav-link" to="/contact">CONTACT</Link>
 				</nav>
 			</div>

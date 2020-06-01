@@ -1,0 +1,61 @@
+@import '../../styles/config.scss';
+
+.banner-container {
+	width: 100%;
+	// @include DBorder;
+	height: 500px;
+	@include BackgroundImageCovered('../../images/BannerImages/Banner1.png');
+
+	h1 {
+		font-size: 5rem;
+	}
+}
+
+.stockists-info-container {
+	@include FlexCenter;
+
+	.stockists-grid-container {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		// @include DBorder;
+		width: 80%;
+		padding: 0.3rem;
+
+		@media screen and (max-width: 1000px) {
+			grid-template-columns: repeat(1, 1fr);
+		}
+		
+
+		.stockists-card {
+			// width: 100%;
+			// @include DBorder;
+			padding: 0.3rem;
+			
+			.stockists-card-container {
+				border-radius: 1rem;
+				width: 100%;
+				background-color: lightgray;
+				height: 35rem;
+				@include FlexCenter;
+				flex-direction: column;
+
+				img {
+					// border-radius: 1.5rem;
+					width: 80%;
+					height: auto;
+					margin-bottom: 0.8rem;
+				}
+
+				span {
+					width: 80%;
+					font-weight: 700;
+					color: black;
+					font-size: 3rem;
+				}
+			}
+
+		}
+
+
+	}
+}
