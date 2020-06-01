@@ -33,8 +33,18 @@
           flex-direction: column;
 }
 
-.footer-container nav div {
+.footer-container nav #footer-link {
   font-size: 1.3em;
   margin-bottom: 10px;
+  color: white;
+  outline: 0;
+  border: none;
+  text-decoration: none;
+  -webkit-transition: color 100ms ease-in-out;
+  transition: color 100ms ease-in-out;
+}
+
+.footer-container nav #footer-link:hover {
+  color: black;
 }
 /*# sourceMappingURL=index.css.map */

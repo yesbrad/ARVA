@@ -8,12 +8,12 @@ class AboutUs extends React.Component {
 		return(
 			<div className='main-container'>
 				<Header />
-				<div className='banner-container'>
-
+				<div className='about-banner-container'>
+					<h1>ABOUT US</h1>
 				</div>
 				<div className="about-container">
 					<div className='about-padding-container'>
-						<h2>WELCOME TO ABOUT US</h2>
+						<h2>ABOUT US</h2>
 						<div className='about-pargraph-container'>
 							<p>Australian RV Accessories was started by Renee and Rod Francis in 2004 when both realised there was a need to provide a quality service to the wholesale RV market and give customers an alternative and equitable supply with new and innovative products.
 

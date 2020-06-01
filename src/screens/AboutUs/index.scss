@@ -1,10 +1,17 @@
 @import '../../styles/config.scss';
 
-.banner-container {
+.about-banner-container {
 	width: 100%;
 	// @include DBorder;
 	height: 500px;
-	@include BackgroundImageCovered('../../images/BannerImages/Banner1.png');
+	@include BackgroundImageCovered('../../images/Awardrv.jpg');
+	@include FlexCenter;
+
+	h1 {
+		color: white;
+		margin: 0;
+		font-size: 5rem;
+	}
 }
 
 .brands-container {

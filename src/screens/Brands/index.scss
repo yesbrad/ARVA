@@ -5,6 +5,10 @@
 	// @include DBorder;
 	height: 500px;
 	@include BackgroundImageCovered('../../images/BannerImages/Banner1.png');
+
+	h1 {
+		font-size: 5rem;
+	}
 }
 
 .brands-container {
@@ -48,5 +52,51 @@
 				line-height: 1.5rem;
 			}
 		}
+	}
+}
+
+.brand-info-container {
+	@include FlexCenter;
+
+	.brand-grid-container {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		// @include DBorder;
+		width: 80%;
+
+		@media screen and (max-width: 1000px) {
+			grid-template-columns: repeat(1, 1fr);
+		}
+
+		.brand-card {
+			// width: 100%;
+			// @include DBorder;
+			padding: 2rem;
+			
+			.brand-card-container {
+				width: 25rem;
+				border-radius: 25rem;
+				background-color: lightgray;
+				height: 25rem;
+				@include FlexCenter;
+				flex-direction: column;
+
+				img {
+					border-radius: 1.5rem;
+					width: 50%;
+					height: auto;
+					margin-bottom: 0.8rem;
+				}
+
+				span {
+					font-weight: 700;
+					color: white;
+					font-size: 1.6rem;
+				}
+			}
+
+		}
+
+
 	}
 }

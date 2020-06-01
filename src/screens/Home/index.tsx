@@ -2,6 +2,7 @@ import React from 'react';
 import './index.css';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
+import NewProducts from '../../components/newProducts';
 
 class Home extends React.Component {
 	render(){
@@ -9,7 +10,9 @@ class Home extends React.Component {
 			<div className='main-container'>
 				<Header />
 				<div className='banner-container'>
-
+					<h1>Welcome to Australian RV Accesories</h1>
+					<h2>Check out out Catalog!</h2>
+					<button>Explore</button>
 				</div>
 				<div className='brands-container'>
 					<img src={require('../../images/Brands/Layer1.png')} />
@@ -22,6 +25,8 @@ class Home extends React.Component {
 				</div>
 				<div className='about-container'>
 					<div className='about-padding-container'>
+						<h2>New Products</h2>
+						<NewProducts />
 						<h2>Who We Are</h2>
 						<div className='about-pargraph-container'>
 							<p>Australian RV Accessories are quality importers, exporters and wholesalers of RV accessories to the caravan and motorhome industries of Australia and New Zealand.

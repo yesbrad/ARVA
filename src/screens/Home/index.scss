@@ -5,6 +5,28 @@
 	// @include DBorder;
 	height: 500px;
 	@include BackgroundImageCovered('../../images/BannerImages/Banner1.png');
+	@include FlexCenter;
+	flex-direction: column;
+	color: white;
+
+	h1 {
+		padding: 0;
+		margin: 0;
+		font-size: 4rem;
+	}
+
+	h2 {
+		font-size: 2rem;
+	}
+
+	button {
+		width: 10rem;
+		height: 3rem;
+		background-color: $primaryColor;
+		color: white;
+		border:none;
+		border-radius: 3rem;
+	}
 }
 
 .brands-container {
@@ -13,6 +35,7 @@
 	height: 5rem;
 
 	img {
+
 		width: auto;
 		height: 1.5rem;
 		margin: 0 1rem;

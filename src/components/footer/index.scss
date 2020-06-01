@@ -11,9 +11,19 @@
 		@include FlexCenter;
 		flex-direction: column;
 
-		div {
+		#footer-link {
 			font-size: 1.3em;
 			margin-bottom: 10px;
+			color: white;
+			outline: 0;
+			border: none;
+			text-decoration: none;
+			transition: color 100ms ease-in-out;
 		}
+
+		#footer-link:hover {
+			color: black;
+		}
+
 	}
 }
