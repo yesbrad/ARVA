@@ -3,21 +3,53 @@ import './index.css';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
 
-interface StockistInfo {
-	imageURI: string,
-	infoText: string
+interface IProps {
 }
 
-const info: StockistInfo[] = [
-	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Varva'} as StockistInfo,
-	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Seaflo'} as StockistInfo,
-	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Seaflo'} as StockistInfo,
-	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Seaflo'} as StockistInfo,
-	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Seaflo'} as StockistInfo,
-	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Seaflo'} as StockistInfo,
-]
+interface IState {
+	stockInfo: StockistInfo[],
+}
 
-class Stockists extends React.Component {
+interface StockistInfo {
+	imageURI: string,
+	title: string
+}
+
+// const info: StockistInfo[] = [
+// 	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Varva'} as StockistInfo,
+// 	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Seaflo'} as StockistInfo,
+// 	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Seaflo'} as StockistInfo,
+// 	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Seaflo'} as StockistInfo,
+// 	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Seaflo'} as StockistInfo,
+// 	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Seaflo'} as StockistInfo,
+// ]
+
+const infoBase: StockistInfo[] = [];
+
+class Stockists extends React.Component<{}, IState> {
+	
+	constructor(props: any) {
+		super(props);
+		this.state = { stockInfo: [] };
+	}
+
+	componentDidMount () {
+		console.log('fetch');
+		fetch('https://us-central1-arva-3193d.cloudfunctions.net/getStockists', {
+			method: "GET",
+			headers: {
+			  "Accept": "application/json",
+			},
+		}).then((val) => {
+			val.json().then((data) => {
+				console.log(data.stockists);
+				data.stockists.map((st: any) => {
+					this.setState({stockInfo: [...this.state.stockInfo, st as StockistInfo]})
+				})
+			})
+		}).catch(err => console.log(err.message));
+	}
+
 	render(){
 		return(
 			<div className='stockists-main-container'>
@@ -27,11 +59,11 @@ class Stockists extends React.Component {
 				</div>
 				<div className="stockists-info-container">
 					<div className="stockists-grid-container">
-						{info.map((val) => {
+						{this.state.stockInfo.map((val) => {
 							return (
 								<div className="stockists-card">
 									<div className="stockists-card-container">
-										<span>{val.infoText}</span>
+										<span>{val.title}</span>
 										<img src={val.imageURI}></img>
 									</div>
 								</div>
