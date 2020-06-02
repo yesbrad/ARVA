@@ -67,7 +67,7 @@
   border-bottom-left-radius: 30px;
 }
 
-.admin-container .admin-column .admin-column-content .admin-stockist-card {
+.admin-container .admin-column .admin-column-content .admin-data-card {
   margin-bottom: 20px;
   width: 100%;
   display: -webkit-box;
@@ -81,7 +81,7 @@
           align-items: center;
 }
 
-.admin-container .admin-column .admin-column-content .admin-stockist-card button {
+.admin-container .admin-column .admin-column-content .admin-data-card button {
   background: red;
   color: white;
   border: 0;

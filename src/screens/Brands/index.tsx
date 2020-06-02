@@ -2,22 +2,40 @@ import React from 'react';
 import './index.css';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
+import { apiURL } from '../../api';
 
-interface BrandInfo {
-	imageURI: string,
-	infoText: string
+export interface BrandInfo {
+	brandID: string
+	brandImage: string,
 }
 
-const info: BrandInfo[] = [
-	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Some Simple info Text Here!'} as BrandInfo,
-	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Some Simple info Text Here!'} as BrandInfo,
-	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Some Simple info Text Here!'} as BrandInfo,
-	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Some Simple info Text Here!'} as BrandInfo,
-	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Some Simple info Text Here!'} as BrandInfo,
-	{imageURI: 'https://images.unsplash.com/photo-1575906421338-0b52b23136c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', infoText: 'Some Simple info Text Here!'} as BrandInfo,
-]
+interface IState {
+	info: BrandInfo[],
+}
 
-class Brands extends React.Component {
+class Brands extends React.Component<{}, IState> {
+	constructor(props: any){
+		super(props);
+		this.state = {
+			info: [],
+		}
+	}
+
+	componentDidMount () {
+		fetch(apiURL + '/getBrands', {
+			method: "GET",
+			headers: {
+			  "Accept": "application/json",
+			},
+		}).then((val) => {
+			val.json().then((data) => {
+				data.brands.map((st: any) => {
+					this.setState({info: [...this.state.info, st as BrandInfo]})
+				})
+			})
+		}).catch(err => console.log(err.message));
+	}	
+
 	render(){
 		return(
 			<div className='main-container'>
@@ -36,12 +54,11 @@ class Brands extends React.Component {
 				</div>
 				<div className="brand-info-container">
 					<div className="brand-grid-container">
-						{info.map((val) => {
+						{this.state.info.map((val) => {
 							return (
 								<div className="brand-card">
 									<div className="brand-card-container">
-										<img src={val.imageURI}></img>
-										{/* <span>{val.infoText}</span> */}
+										<img src={val.brandImage}></img>
 									</div>
 								</div>
 							)
