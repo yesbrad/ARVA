@@ -2,21 +2,11 @@ import React from 'react';
 import './index.css';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
-
-interface IProps {
-}
+import { StockistInfo } from '../../redux/stockists/types';
 
 interface IState {
 	stockInfo: StockistInfo[],
 }
-
-export interface StockistInfo {
-	ID: string,
-	imageURI: string,
-	title: string
-}
-
-const infoBase: StockistInfo[] = [];
 
 class Stockists extends React.Component<{}, IState> {
 	
@@ -56,7 +46,7 @@ class Stockists extends React.Component<{}, IState> {
 								<div className="stockists-card">
 									<div className="stockists-card-container">
 										<span>{val.title}</span>
-										<img src={val.imageURI}></img>
+										<img src={val.image64}></img>
 									</div>
 								</div>
 							)

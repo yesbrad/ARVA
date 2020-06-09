@@ -1,8 +1,10 @@
 import React from 'react';
 import '../index.css';
 import { apiURL } from '../../../api';
-import { StockistInfo } from "../../Stockists";
-const imageToBase64 = require('image-to-base64');
+import { StockistInfo } from '../../../redux/stockists/types';
+import { connect } from 'react-redux';
+import { addStockistAction } from '../../../redux/stockists/actions';
+import { URLtoBASE64Raw } from '../../../util';
 
 interface IState {
 	stockInfo: StockistInfo[],
@@ -13,7 +15,11 @@ interface IState {
 	uploading: boolean,
 }
 
-class AdminStockists extends React.Component<{}, IState> {
+interface IProps {
+	addStockistProp: any,
+}
+
+class AdminStockists extends React.Component<IProps, IState> {
 	constructor(props: any){
 		super(props);
 		this.state = {
@@ -32,42 +38,56 @@ class AdminStockists extends React.Component<{}, IState> {
 
 	onAddStockist = async () => {
 		console.log('Adding Stockist');
+		
 		if(this.state.uploading) return;
 
 		this.setState({uploading: true});
 
 		const { stockID, stockTitle, stockImageURI} = this.state;
 
-		let reader = new FileReader();
-		reader.readAsDataURL(stockImageURI?.item(0) as File);
-		reader.onload = async () => {
-			try {
-				const imageBase = String(reader.result).replace('data:image/png;base64,' , '');
+		
+		try {
+			const imageBase = await URLtoBASE64Raw(stockImageURI?.item(0) as File)
+			
+			await this.props.addStockistProp({
+				ID: stockID,
+				image64: imageBase,
+				title: stockTitle
+			});
 
-				await fetch(apiURL + '/addStockist', {
-					method: "POST",
-					headers: {
-						"Accept": "application/json",
-					},
-					body: JSON.stringify({
-						ID: stockID,
-						image64: imageBase,
-						title: stockTitle
-					}),
-				});
+			console.log("Fished Adding")
 
-				await this.pullStockist();
-			} catch (err){
-				console.log(err);
-			}
+		} catch (err){
+			console.log(err);
+		}
 
-			this.setState({uploading: false});
-		};
-		reader.onerror = (error) => {
-			console.log('Error: ', error);
-			this.setState({uploading: false});
-			return;
-		};
+		// let reader = new FileReader();
+		// reader.readAsDataURL(stockImageURI?.item(0) as File);
+		// reader.onload = async () => {
+		// 	try {
+		// 		const imageBase = String(reader.result).replace('data:image/png;base64,' , '');
+        //         console.log("AdminStockists -> reader.onload -> imageBase", imageBase)
+
+		// 		await this.props.addStockistProp({
+		// 			ID: stockID,
+		// 			image64: imageBase,
+		// 			title: stockTitle
+		// 		});
+
+		// 		console.log("Fished Adding")
+
+		// 		await this.pullStockist();
+		// 	} catch (err){
+		// 		console.log(err);
+		// 	}
+
+		// 	this.setState({uploading: false});
+		// };
+		// reader.onerror = (error) => {
+		// 	console.log('Error: ', error);
+		// 	this.setState({uploading: false});
+		// 	return;
+		// };
 		
 	}
 
@@ -99,7 +119,8 @@ class AdminStockists extends React.Component<{}, IState> {
 		this.setState({ stockInfo: newStock.stockists });
 	}
 
-	render(){
+	render() {
+		
 		return(
 			<div>
 				{this.renderStockistPanel()}
@@ -138,4 +159,8 @@ class AdminStockists extends React.Component<{}, IState> {
 	)
 }
 
-export default AdminStockists;
+const mapDispatch = {
+	addStockistProp: (p: StockistInfo) => addStockistAction(p)
+}
+
+export default connect(null, mapDispatch)(AdminStockists);
