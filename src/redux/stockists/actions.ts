@@ -1,7 +1,5 @@
-import { StockistActionTypes, StockistInfo, AddStockistAction } from './types';
-import { ThunkAction } from 'redux-thunk';
-import { Action, Dispatch } from 'redux';
-import { AppState } from '../state';
+import { StockistTypes, StockistInfo, AddStockistAction, GetStockistAction } from './types';
+import { Dispatch } from 'redux';
 import { apiURL } from '../../api';
 
 export const addStockistAction = (info: StockistInfo) => {
@@ -23,13 +21,42 @@ export const addStockistAction = (info: StockistInfo) => {
 		}
 
 		dispatch<AddStockistAction>({
-			type: StockistActionTypes.Add,
+			type: StockistTypes.Add,
 			payload: {
 				ID: info.ID,
 				title: info.title,
 				image64: info.image64,
 			}
 		});
+	})
+
+};
+
+export const getStockistAction = () => {
+	return (async (dispatch: Dispatch) => {
+		try {
+			console.log('fetch');
+			const val = await fetch('https://us-central1-arva-3193d.cloudfunctions.net/getStockists', {
+				method: "GET",
+				headers: {
+					"Accept": "application/json",
+				},
+			});
+
+			const jsn = await val.json();
+			console.log(jsn.stockists);
+
+			dispatch<GetStockistAction>({
+				type: StockistTypes.Get,
+				payload: jsn.stockists
+			});
+
+		} catch (err) {
+			console.log(err);
+		}
+
+
+
 	})
 
 };

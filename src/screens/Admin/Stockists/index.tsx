@@ -45,7 +45,6 @@ class AdminStockists extends React.Component<IProps, IState> {
 
 		const { stockID, stockTitle, stockImageURI} = this.state;
 
-		
 		try {
 			const imageBase = await URLtoBASE64Raw(stockImageURI?.item(0) as File)
 			
@@ -55,40 +54,11 @@ class AdminStockists extends React.Component<IProps, IState> {
 				title: stockTitle
 			});
 
-			console.log("Fished Adding")
+			console.log("Finshed Adding")
 
 		} catch (err){
 			console.log(err);
 		}
-
-		// let reader = new FileReader();
-		// reader.readAsDataURL(stockImageURI?.item(0) as File);
-		// reader.onload = async () => {
-		// 	try {
-		// 		const imageBase = String(reader.result).replace('data:image/png;base64,' , '');
-        //         console.log("AdminStockists -> reader.onload -> imageBase", imageBase)
-
-		// 		await this.props.addStockistProp({
-		// 			ID: stockID,
-		// 			image64: imageBase,
-		// 			title: stockTitle
-		// 		});
-
-		// 		console.log("Fished Adding")
-
-		// 		await this.pullStockist();
-		// 	} catch (err){
-		// 		console.log(err);
-		// 	}
-
-		// 	this.setState({uploading: false});
-		// };
-		// reader.onerror = (error) => {
-		// 	console.log('Error: ', error);
-		// 	this.setState({uploading: false});
-		// 	return;
-		// };
-		
 	}
 
 	onDeleteStockist = async (name: string) => {

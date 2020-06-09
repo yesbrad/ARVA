@@ -3,33 +3,23 @@ import './index.css';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
 import { StockistInfo } from '../../redux/stockists/types';
+import { connect } from 'react-redux';
+import { AppState } from '../../redux/state';
+import { getStockistAction } from '../../redux/stockists/actions';
 
 interface IState {
 	stockInfo: StockistInfo[],
 }
 
-class Stockists extends React.Component<{}, IState> {
-	
-	constructor(props: any) {
-		super(props);
-		this.state = { stockInfo: [] };
-	}
+interface IProps {
+	stockists?: StockistInfo[]
+	getStockistProp?: any;
+}
 
-	componentDidMount () {
-		console.log('fetch');
-		fetch('https://us-central1-arva-3193d.cloudfunctions.net/getStockists', {
-			method: "GET",
-			headers: {
-			  "Accept": "application/json",
-			},
-		}).then((val) => {
-			val.json().then((data) => {
-				console.log(data.stockists);
-				data.stockists.map((st: any) => {
-					this.setState({stockInfo: [...this.state.stockInfo, st as StockistInfo]})
-				})
-			})
-		}).catch(err => console.log(err.message));
+class Stockists extends React.Component<IProps, {}> {
+
+	componentDidMount() {
+		this.props.getStockistProp();
 	}	
 
 	render(){
@@ -41,9 +31,9 @@ class Stockists extends React.Component<{}, IState> {
 				</div>
 				<div className="stockists-info-container">
 					<div className="stockists-grid-container">
-						{this.state.stockInfo.map((val) => {
+						{this.props.stockists && this.props.stockists.map((val) => {
 							return (
-								<div className="stockists-card">
+								<div className="stockists-card" key={val.ID}>
 									<div className="stockists-card-container">
 										<span>{val.title}</span>
 										<img src={val.image64}></img>
@@ -59,4 +49,12 @@ class Stockists extends React.Component<{}, IState> {
 	}
 }
 
-export default Stockists;
+const mapStateToProps = (state: AppState) => ({
+	stockists: state.stockists
+});
+
+const mapDispatch = {
+	getStockistProp: () => getStockistAction(),
+}
+
+export default connect(mapStateToProps, mapDispatch)(Stockists);
