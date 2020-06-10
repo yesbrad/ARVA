@@ -72,3 +72,48 @@
 		}
 	}
 }
+
+.admin-main-container {
+	
+	// @include DBorder;
+
+	.admin-login-container {
+		@include FlexCenter;
+		// @include DBorder;
+		height: 95vh;
+		width: 100%;
+		flex-direction: column;
+		overflow: none;
+
+		img {
+			width: 10rem;
+			height: auto;
+			margin-bottom: 50px;
+		}
+
+		input {
+			width: 20rem;
+			border-radius: 2rem;
+			border: 1px lightgray solid;
+			padding: 15px 30px;
+			box-sizing: border-box;
+			margin-bottom: 20px;
+		}
+
+		button {
+			background: $primaryColor;
+			border: none;
+			width: 20rem;
+			height: 2.5rem;
+			border-radius: 3rem;
+		}
+
+		span {
+			color: red;
+			text-align: right;
+			width: 20rem;
+			font-size: 0.8rem;
+			margin-top: 10px;
+		}
+	}
+}
