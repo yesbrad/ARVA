@@ -2,6 +2,7 @@
 export enum StockistTypes {
 	Add,
 	Get,
+	Delete,
 }
 
 /// Stockist Info Base Class
@@ -16,8 +17,13 @@ export interface AddStockistAction {
 	payload: StockistInfo,
 }
 
+export interface DeleteStockistAction {
+	type: typeof StockistTypes.Delete,
+	payload: StockistInfo,
+}
+
 export interface GetStockistAction {
 	type: typeof StockistTypes.Get,
 	payload: StockistInfo[],
 }
-export type StockistActionTypes = AddStockistAction | GetStockistAction;
+export type StockistActionTypes = AddStockistAction | GetStockistAction | DeleteStockistAction;

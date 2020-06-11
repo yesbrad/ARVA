@@ -12,6 +12,10 @@ export const stockistReducer = (state: AppState = DefaultState, action: Stockist
 			return {
 				stockists: [...action.payload],
 			}
+		case StockistTypes.Delete: 
+			return {
+				stockists: state.stockists.filter(info => info.ID != action.payload.ID)
+			}
 		default: return state;
 	}
 }

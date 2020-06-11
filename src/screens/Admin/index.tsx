@@ -19,9 +19,10 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-interface User {
+export interface User {
 	email: string,
 	uid: string,
+	token: string
 }
 
 interface IState {
@@ -51,16 +52,23 @@ class Admin extends React.Component<{}, IState> {
 	}
 
 	componentDidMount() {
-		firebase.auth().onAuthStateChanged((user) => {
+		firebase.auth().onAuthStateChanged(async(user) => {
 			if (user) {
-				this.setState({
-					loggedIn: true,
-					user: {
-						email: String(user.email),
-						uid: user.uid,
-					},
-					loginError: ''
-				})
+				try {
+					const token = await user.getIdToken();
+					
+					this.setState({
+						loggedIn: true,
+						user: {
+							email: String(user.email),
+							uid: user.uid,
+							token: token
+						},
+						loginError: ''
+					})
+				} catch {
+					this.setState({ loggedIn: false, user: null, loginError: 'Could not fetch Token' })
+				}
 			} else {
 				this.setState({ loggedIn: false, user: null })
 			}
@@ -91,8 +99,8 @@ class Admin extends React.Component<{}, IState> {
 					<nav className="admin-nav">
 						<button onClick={() => this.signOut()}>SIGN OUT</button>
 					</nav>
-					<AdminStockists />
-					<AdminBrands />
+					<AdminStockists user={this.state.user} />
+					{/* <AdminBrands  user={this.state.user}/> */}
 				</div> :
 				<div className="admin-login-container">
 					<img src={require('../../images/Logo.png')}></img>

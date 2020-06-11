@@ -1,14 +1,17 @@
-import { StockistTypes, StockistInfo, AddStockistAction, GetStockistAction } from './types';
+import { StockistTypes, StockistInfo, AddStockistAction, GetStockistAction, DeleteStockistAction } from './types';
 import { Dispatch } from 'redux';
 import { apiURL } from '../../api';
+import { AppState } from '../state';
+import { User } from '../../screens/Admin';
 
-export const addStockistAction = (info: StockistInfo) => {
+export const addStockistAction = (info: StockistInfo, user: User) => {
 	return (async (dispatch: Dispatch) => {
 		try {
 			await fetch(apiURL + '/addStockist', {
 				method: "POST",
 				headers: {
 					"Accept": "application/json",
+					"Authorization": `Bearer ${user.token}`,
 				},
 				body: JSON.stringify({
 					ID: info.ID,
@@ -31,6 +34,36 @@ export const addStockistAction = (info: StockistInfo) => {
 	})
 
 };
+
+export const deleteStockistAction = (info: StockistInfo, user: User) => {
+	return (async (dispatch: Dispatch) => {
+		try {
+			await fetch(apiURL + '/removeStockist', {
+				method: "POST",
+				headers: {
+					"Accept": "application/json",
+					"Authorization": `Bearer ${user.token}`,
+				},
+				body: JSON.stringify({
+					ID: info.ID,
+				}),
+			});
+		} catch (err) {
+			console.log(err);
+		}
+
+		dispatch<DeleteStockistAction>({
+			type: StockistTypes.Delete,
+			payload: {
+				ID: info.ID,
+				title: info.title,
+				image64: info.image64,
+			}
+		});
+	})
+
+};
+
 
 export const getStockistAction = () => {
 	return (async (dispatch: Dispatch) => {

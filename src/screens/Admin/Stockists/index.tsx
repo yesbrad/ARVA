@@ -3,8 +3,10 @@ import '../index.css';
 import { apiURL } from '../../../api';
 import { StockistInfo } from '../../../redux/stockists/types';
 import { connect } from 'react-redux';
-import { addStockistAction } from '../../../redux/stockists/actions';
+import { addStockistAction, getStockistAction, deleteStockistAction } from '../../../redux/stockists/actions';
 import { URLtoBASE64Raw } from '../../../util';
+import { User } from '../index';
+import { AppState } from '../../../redux/state';
 
 interface IState {
 	stockInfo: StockistInfo[],
@@ -17,6 +19,10 @@ interface IState {
 
 interface IProps {
 	addStockistProp: any,
+	getStockists: any,
+	deleteStockistProp: any,
+	user: User
+	stockists: StockistInfo[],
 }
 
 class AdminStockists extends React.Component<IProps, IState> {
@@ -52,31 +58,27 @@ class AdminStockists extends React.Component<IProps, IState> {
 				ID: stockID,
 				image64: imageBase,
 				title: stockTitle
-			});
+			}, this.props.user);
 
 			console.log("Finshed Adding")
 
 		} catch (err){
 			console.log(err);
 		}
+
+		this.setState({uploading: false});
 	}
 
-	onDeleteStockist = async (name: string) => {
-		console.log('Deleting: ' + name);
+	onDeleteStockist = async (name: StockistInfo) => {
+		console.log('Deleting: ' + name.ID);
 
 		if(this.state.deleting) return;
 
 		this.setState({deleting: true});
 
 		try{
-			await fetch(apiURL + '/removeStockist', {
-				method: 'POST',
-				body: JSON.stringify({ ID: name })
-			});
-
-			console.log('Removed: ' + name);
-
-			await this.pullStockist();
+			await this.props.deleteStockistProp(name, this.props.user)
+			console.log('Removed: ' + name.ID);
 		} catch (err) {
 			console.log('Deleting Failed', err)
 		}
@@ -85,8 +87,7 @@ class AdminStockists extends React.Component<IProps, IState> {
 	}
 
 	pullStockist = async () => {
-		const newStock = await (await fetch(apiURL + '/getStockists')).json();
-		this.setState({ stockInfo: newStock.stockists });
+		this.props.getStockists();
 	}
 
 	render() {
@@ -115,11 +116,11 @@ class AdminStockists extends React.Component<IProps, IState> {
 			<div className="admin-column">
 				<h3>Current Content</h3>
 				<div className="admin-column-content">
-					{this.state.stockInfo.map(val => {
+					{this.props.stockists.map(val => {
 						return (
 							<div key={val.ID} className='admin-data-card'>
 								<span>{val.title}</span>
-								<button onClick={() => this.onDeleteStockist(val.ID)}>{this.state.deleting ? "DELETING" : "Delete"}</button>
+								<button onClick={() => this.onDeleteStockist(val)}>{this.state.deleting ? "DELETING" : "Delete"}</button>
 							</div>
 						)
 					})}
@@ -130,7 +131,13 @@ class AdminStockists extends React.Component<IProps, IState> {
 }
 
 const mapDispatch = {
-	addStockistProp: (p: StockistInfo) => addStockistAction(p)
+	addStockistProp: (p: StockistInfo, user: User) => addStockistAction(p, user),
+	deleteStockistProp: (p: StockistInfo, user: User) => deleteStockistAction(p, user),
+	getStockists: () => getStockistAction(),
 }
 
-export default connect(null, mapDispatch)(AdminStockists);
+const mapToProps = (state: AppState) => ({
+	stockists: state.stockists,
+})
+
+export default connect(mapToProps, mapDispatch)(AdminStockists);
