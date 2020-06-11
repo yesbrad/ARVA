@@ -106,7 +106,6 @@ class AdminNewProduct extends React.Component<IProps, IState> {
 	}
 
 	render() {
-		console.log(this.props.newProducts, 'YO HERES OUT STORE');
 		return (
 			<div className="admin-container">
 				<div className="admin-column">

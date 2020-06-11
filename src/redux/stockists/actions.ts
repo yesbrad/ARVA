@@ -69,7 +69,6 @@ export const deleteStockistAction = (info: StockistInfo, user: User) => {
 export const getStockistAction = () => {
 	return (async (dispatch: Dispatch) => {
 		try {
-			console.log('fetch');
 			const val = await fetch('https://us-central1-arva-3193d.cloudfunctions.net/getStockists', {
 				method: "GET",
 				headers: {
@@ -78,7 +77,6 @@ export const getStockistAction = () => {
 			});
 
 			const jsn = await val.json();
-			console.log(jsn.stockists);
 
 			dispatch<GetStockistAction>({
 				type: ActionTypes.StockGet,

@@ -60,8 +60,6 @@ export const getBrandAction = () => {
 
 			const jsn = await val.json();
 
-			console.log(jsn);
-
 			dispatch<GetBrandsAction>({
 				type: ActionTypes.BrandGet,
 				payload: jsn.brands
