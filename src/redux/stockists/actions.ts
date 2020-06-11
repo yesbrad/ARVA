@@ -1,8 +1,9 @@
-import { StockistTypes, StockistInfo, AddStockistAction, GetStockistAction, DeleteStockistAction } from './types';
+import { StockistInfo, AddStockistAction, GetStockistAction, DeleteStockistAction } from './types';
 import { Dispatch } from 'redux';
 import { apiURL } from '../../api';
 import { AppState } from '../state';
 import { User } from '../../screens/Admin';
+import { ActionTypes } from '../actionTypes';
 
 export const addStockistAction = (info: StockistInfo, user: User) => {
 	return (async (dispatch: Dispatch) => {
@@ -24,7 +25,7 @@ export const addStockistAction = (info: StockistInfo, user: User) => {
 		}
 
 		dispatch<AddStockistAction>({
-			type: StockistTypes.Add,
+			type: ActionTypes.StockAdd,
 			payload: {
 				ID: info.ID,
 				title: info.title,
@@ -53,7 +54,7 @@ export const deleteStockistAction = (info: StockistInfo, user: User) => {
 		}
 
 		dispatch<DeleteStockistAction>({
-			type: StockistTypes.Delete,
+			type: ActionTypes.StockDelete,
 			payload: {
 				ID: info.ID,
 				title: info.title,
@@ -80,16 +81,11 @@ export const getStockistAction = () => {
 			console.log(jsn.stockists);
 
 			dispatch<GetStockistAction>({
-				type: StockistTypes.Get,
+				type: ActionTypes.StockGet,
 				payload: jsn.stockists
 			});
-
 		} catch (err) {
 			console.log(err);
 		}
-
-
-
 	})
-
 };

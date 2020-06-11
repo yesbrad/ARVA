@@ -15,6 +15,7 @@ interface IState {
 	stockTitle: string,
 	deleting: boolean,
 	uploading: boolean,
+	error: string
 }
 
 interface IProps {
@@ -35,6 +36,7 @@ class AdminStockists extends React.Component<IProps, IState> {
 			stockTitle: 'Enter title',
 			deleting: false,
 			uploading: false,
+			error: ''
 		};
 	}
 
@@ -47,9 +49,25 @@ class AdminStockists extends React.Component<IProps, IState> {
 		
 		if(this.state.uploading) return;
 
-		this.setState({uploading: true});
+		this.setState({uploading: true, error: ''});
 
 		const { stockID, stockTitle, stockImageURI} = this.state;
+
+		let takenID: boolean = false;
+
+		this.props.stockists.map((prod) => {
+			if (prod.ID === stockID) {
+				this.setState({ error: 'ID Already Taken', uploading: false });
+				takenID = true;
+			}
+		});
+
+		if (takenID) return;
+
+		if (stockImageURI === null) {
+			this.setState({ error: 'Image Missing', uploading: false });
+			return;
+		}
 
 		try {
 			const imageBase = await URLtoBASE64Raw(stockImageURI?.item(0) as File)
@@ -91,7 +109,6 @@ class AdminStockists extends React.Component<IProps, IState> {
 	}
 
 	render() {
-		
 		return(
 			<div>
 				{this.renderStockistPanel()}
@@ -111,12 +128,13 @@ class AdminStockists extends React.Component<IProps, IState> {
 					<h3>Image URI</h3>
 					<input type="file" accept="image/png" onChange={res => this.setState({ stockImageURI: res.target.files as FileList | null })}></input>
 					<button onClick={() => this.onAddStockist()}>{this.state.uploading ? 'UPLOADING IN PROGESS' : "Upload"}</button>
+					<span>{this.state.error}</span>
 				</div>
 			</div>
 			<div className="admin-column">
 				<h3>Current Content</h3>
 				<div className="admin-column-content">
-					{this.props.stockists.map(val => {
+					{this.props.stockists && this.props.stockists.map(val => {
 						return (
 							<div key={val.ID} className='admin-data-card'>
 								<span>{val.title}</span>

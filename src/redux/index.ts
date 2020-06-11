@@ -1,12 +1,9 @@
-import { stockistReducer } from './stockists/reducer';
-import { combineReducers, createStore, Store, applyMiddleware } from 'redux';
+import { createStore, Store, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import { reducer } from './reducer';
 import { AppState } from './state';
 
-// const reducers = combineReducers({
-// 	stockistReducer,
-// });
-
-const store: Store<AppState> = createStore(stockistReducer, applyMiddleware(thunk));
+const store: Store<AppState> = createStore(reducer, applyMiddleware(thunk));
 
 export default store;
+

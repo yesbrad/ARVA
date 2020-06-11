@@ -57,6 +57,10 @@
   border-radius: 3rem;
 }
 
+.admin-container .admin-column .admin-column-input span {
+  color: red;
+}
+
 .admin-container .admin-column .admin-column-content {
   border: 1px gray solid;
   width: 70%;

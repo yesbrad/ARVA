@@ -2,41 +2,24 @@ import React from 'react';
 import './index.css';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
-import { apiURL } from '../../api';
+import { BrandInfo } from '../../redux/brands/types';
+import { AppState } from '../../redux/state';
+import { getBrandAction } from '../../redux/brands/actions';
+import { connect } from 'react-redux';
 
-export interface BrandInfo {
-	brandID: string
-	brandImage: string,
+interface IProps {
+	brands?: BrandInfo[],
+	getBrandsProp?: any,
 }
 
-interface IState {
-	info: BrandInfo[],
-}
-
-class Brands extends React.Component<{}, IState> {
-	constructor(props: any){
-		super(props);
-		this.state = {
-			info: [],
-		}
-	}
-
+class Brands extends React.Component<IProps, {}> {
 	componentDidMount () {
-		fetch(apiURL + '/getBrands', {
-			method: "GET",
-			headers: {
-			  "Accept": "application/json",
-			},
-		}).then((val) => {
-			val.json().then((data) => {
-				data.brands.map((st: any) => {
-					this.setState({info: [...this.state.info, st as BrandInfo]})
-				})
-			})
-		}).catch(err => console.log(err.message));
+		this.props.getBrandsProp();
 	}	
 
-	render(){
+	render() {
+		console.log('YES CUNT', this.props.brands);
+
 		return(
 			<div className='main-container'>
 				<Header />
@@ -54,7 +37,7 @@ class Brands extends React.Component<{}, IState> {
 				</div>
 				<div className="brand-info-container">
 					<div className="brand-grid-container">
-						{this.state.info.map((val) => {
+						{this.props.brands && this.props.brands.map((val) => {
 							return (
 								<div className="brand-card">
 									<div className="brand-card-container">
@@ -71,4 +54,12 @@ class Brands extends React.Component<{}, IState> {
 	}
 }
 
-export default Brands;
+const mapStateToProps = (state: AppState) => ({
+	brands: state.brands
+});
+
+const mapDispatch = {
+	getBrandsProp: () => getBrandAction(),
+}
+
+export default connect(mapStateToProps, mapDispatch)(Brands);
