@@ -5,6 +5,9 @@ import { IAction } from "../state";
 export interface BrochureInfo {
 	brochureID: string,
 	brochurePDFURL: string,
+	brochureTitle: string,
+	brochureDescription: string,
+	brochureImageURL: string,
 }
 
 export interface IBrochureState {

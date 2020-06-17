@@ -15,6 +15,9 @@ import { BrochureInfo } from '../../../redux/Brochures/types';
 interface IState {
 	newBrochureIDInput: string,
 	newBrochurePDFInput: FileList | null,
+	newBrochureDesriptionInput: string,
+	newBrochureTitleInput: string,
+	newBrochureImageInput: FileList | null;
 	deleting: boolean,
 	uploading: boolean,
 	error: string,
@@ -34,6 +37,9 @@ class AdminBrochures extends React.Component<IProps, IState> {
 		this.state = {
 			newBrochureIDInput: 'Name',
 			newBrochurePDFInput: null,
+			newBrochureDesriptionInput: 'Description',
+			newBrochureTitleInput: 'Title',
+			newBrochureImageInput: null,
 			deleting: false,
 			uploading: false,
 			error: '',
@@ -51,7 +57,7 @@ class AdminBrochures extends React.Component<IProps, IState> {
 
 		this.setState({ uploading: true, error: '' });
 
-		const { newBrochureIDInput, newBrochurePDFInput } = this.state;
+		const { newBrochureIDInput, newBrochurePDFInput, newBrochureTitleInput, newBrochureDesriptionInput, newBrochureImageInput } = this.state;
 
 		let takenID: boolean = false;
 
@@ -65,19 +71,32 @@ class AdminBrochures extends React.Component<IProps, IState> {
 		if (takenID) return;
 
 		if (newBrochurePDFInput === null) {
+			this.setState({ error: 'PDF Missing', uploading: false });
+			return;
+		}
+
+		if (newBrochureImageInput === null) {
 			this.setState({ error: 'Image Missing', uploading: false });
 			return;
 		}
 
 		try {			
 			const storageRef = firebase.storage().ref();
-			const pdfRef = storageRef.child(`brochures/${newBrochureIDInput}`);
+			const pdfRef = storageRef.child(`brochures/PDF_${newBrochureIDInput}`);
 			await pdfRef.put(newBrochurePDFInput[0]);
 			const downloadURL = await pdfRef.getDownloadURL();
+
+			const storageRefImage = firebase.storage().ref();
+			const pdfRefImage = storageRefImage.child(`brochures/images/Image_${newBrochureIDInput}`);
+			await pdfRefImage.put(newBrochureImageInput[0]);
+			const downloadURLImage = await pdfRefImage.getDownloadURL();
 
 			await this.props.addBrochureAction({
 				brochureID: newBrochureIDInput,
 				brochurePDFURL: downloadURL,
+				brochureTitle: newBrochureTitleInput,
+				brochureDescription: newBrochureDesriptionInput,
+				brochureImageURL: downloadURLImage,
 			}, this.props.user);
 
 			console.log("Finshed Adding Brochure")
@@ -114,8 +133,14 @@ class AdminBrochures extends React.Component<IProps, IState> {
 						<h1>BROCHURES EDITOR</h1>
 						<h3>ID</h3>
 						<input value={this.state.newBrochureIDInput} onChange={res => this.setState({ newBrochureIDInput: res.target.value })}></input>
-						<h3>Brochure URI</h3>
+						<h3>Title</h3>
+						<input value={this.state.newBrochureTitleInput} onChange={res => this.setState({ newBrochureTitleInput: res.target.value })}></input>
+						<h3>Description</h3>
+						<input value={this.state.newBrochureDesriptionInput} onChange={res => this.setState({ newBrochureDesriptionInput: res.target.value })}></input>
+						<h3>Brochure PDF</h3>
 						<input type="file" accept="application/pdf" onChange={res => this.setState({ newBrochurePDFInput: res.target.files as FileList | null })}></input>
+						<h3>Brochure IMAGE</h3>
+						<input type="file" accept="image/png" onChange={res => this.setState({ newBrochureImageInput: res.target.files as FileList | null })}></input>
 						<button onClick={() => this.onAddNewBrochure()}>{this.state.uploading ? 'UPLOADING IN PROGESS' : "Upload"}</button>
 						<span>{this.state.error}</span>
 					</div>

@@ -18,8 +18,6 @@ class Brands extends React.Component<IProps, {}> {
 	}	
 
 	render() {
-		console.log('YES CUNT', this.props.brands);
-
 		return(
 			<div className='main-container'>
 				<Header />

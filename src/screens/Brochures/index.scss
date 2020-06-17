@@ -1,0 +1,93 @@
+@import '../../styles/config.scss';
+
+.banner-container {
+	width: 100%;
+	// @include DBorder;
+	height: 500px;
+	@include BackgroundImageCovered('../../images/BannerImages/Banner1.png');
+
+	h1 {
+		font-size: 5rem;
+	}
+}
+
+.brochure-info-container {
+	@include FlexCenter;
+
+	.brochure-grid-container {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+		// @include DBorder;
+		width: 80%;
+
+		@media screen and (max-width: 1000px) {
+			grid-template-columns: repeat(1, 1fr);
+			width: 100%;
+		}
+
+		.brochure-card {
+			padding: 2rem;
+			
+			.brochure-card-container {
+				width: 100%;
+				border-radius: 2rem;
+				background-color: lightgray;
+				@include FlexCenter;
+				flex-direction: row;
+				justify-content: space-between;
+				padding: 5rem;
+				box-sizing: border-box;
+
+				@media screen and (max-width: 1000px) {
+					flex-direction: column;
+					padding: 2rem;
+				}
+
+				img {
+					border-radius: 1.5rem;
+					width: 25%;
+					height: auto;
+					margin-bottom: 0.8rem;
+
+					@media screen and (max-width: 1000px) {
+						width: 40%;
+					}
+				}
+
+				.brochure-card-details {
+					display: flex;
+					flex-direction: column;
+					width: 40%;
+
+					@media screen and (max-width: 1000px) {
+						width: 80%;
+					}
+				}
+
+				h2{
+					color: white;
+					font-size: 3rem;
+					margin-bottom: 0;
+				}
+
+				span {
+					color: white;
+					font-size: 1rem;
+				}
+
+				button {
+					margin-top: 2rem;
+					border: none;
+					background: $primaryColor;
+					color: white;
+					height: 3rem;
+					width: 10rem;
+					border-radius: 2rem;
+				}
+			}
+
+		}
+
+
+	}
+}

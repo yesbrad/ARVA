@@ -12,6 +12,7 @@ import {
 	Switch,
 	Route,
 } from 'react-router-dom';
+import Brochures from './screens/Brochures';
 
 function App() {
 	return (
@@ -22,6 +23,7 @@ function App() {
 					<Route path="/brands"><Brands /></Route>
 					<Route path="/stockists"><Stockists /></Route>
 					<Route path="/contact"><Contact /></Route>
+					<Route path="/brochures"><Brochures /></Route>
 					<Route path="/admin"><Admin /></Route>
 				</Switch>
 			</Router>
