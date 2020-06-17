@@ -7,5 +7,8 @@ export enum ActionTypes {
 	BrandGet,
 	ProductDelete,
 	ProductAdd,
-	ProductGet
+	ProductGet,
+	BrochureAdd,
+	BrochureGet,
+	BrochureDelete,
 }

@@ -3,6 +3,7 @@ import './index.css';
 import AdminStockists from './Stockists';
 import AdminBrands from './Brands';
 import AdminNewProducts from './NewProducts';
+import AdminBrochures from './Brochures';
 import * as firebase from "firebase/app";
 import "firebase/auth";
 
@@ -103,6 +104,7 @@ class Admin extends React.Component<{}, IState> {
 					<AdminStockists user={this.state.user} />
 					<AdminBrands user={this.state.user} />
 					<AdminNewProducts user={this.state.user} />
+					<AdminBrochures user={this.state.user} />
 				</div> :
 				<div className="admin-login-container">
 					<img src={require('../../images/Logo.png')}></img>

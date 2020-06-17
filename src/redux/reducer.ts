@@ -50,6 +50,21 @@ export const reducer = (state: AppState = DefaultState, action: IAction) => {
 				...state,
 				newProducts: state.newProducts.filter(info => info.newProductID != action.payload.newProductID)
 			}
+		case ActionTypes.BrochureAdd:
+			return {
+				...state,
+				brochures: [...state.brochures, action.payload],
+			}
+		case ActionTypes.BrochureGet:
+			return {
+				...state,
+				brochures: [...action.payload],
+			}
+		case ActionTypes.BrochureDelete: 
+			return {
+				...state,
+				brochures: state.brochures.filter(info => info.brochureID != action.payload.brochureID)
+			}
 		default: return state;
 	}
 }
