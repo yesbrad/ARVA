@@ -36,7 +36,7 @@ class Brochures extends React.Component<IProps, {}> {
 										<div className="brochure-card-details">
 											<h2>{val.brochureTitle}</h2>
 											<span>{val.brochureDescription}</span>
-											<button onClick={() => window.open(val.brochurePDFURL)}>Download Brochure</button>
+											<button onClick={() => window.open(val.brochurePDFURL)}>Open Brochure</button>
 										</div>
 									</div>
 								</div>

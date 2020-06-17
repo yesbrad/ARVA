@@ -13,6 +13,7 @@
 		padding: 0;
 		margin: 0;
 		font-size: 4rem;
+		text-align: center;
 	}
 
 	h2 {
@@ -52,7 +53,7 @@
 	margin-bottom: 3rem;
 
 	.about-padding-container {
-		width: 50%;
+		min-width: 80%;
 		// @include DBorder;
 		
 		.about-pargraph-container {
@@ -64,6 +65,10 @@
 				width: 46%;
 				line-height: 1.5rem;
 			}
+		}
+
+		h2 {
+			font-size: 3rem;
 		}
 	}
 }

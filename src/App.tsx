@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import Home from './screens/Home';
 import Stockists from './screens/Stockists';
@@ -15,6 +15,10 @@ import {
 import Brochures from './screens/Brochures';
 
 function App() {
+	useEffect(() => {
+		
+	}, [])
+
 	return (
 		<Provider store={reduxStore}>		
 			<Router>

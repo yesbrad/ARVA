@@ -25,6 +25,7 @@
   padding: 0;
   margin: 0;
   font-size: 4rem;
+  text-align: center;
 }
 
 .banner-container h2 {
@@ -80,7 +81,7 @@
 }
 
 .about-container .about-padding-container {
-  width: 50%;
+  min-width: 80%;
 }
 
 .about-container .about-padding-container .about-pargraph-container {
@@ -99,5 +100,9 @@
 .about-container .about-padding-container .about-pargraph-container p {
   width: 46%;
   line-height: 1.5rem;
+}
+
+.about-container .about-padding-container h2 {
+  font-size: 3rem;
 }
 /*# sourceMappingURL=index.css.map */

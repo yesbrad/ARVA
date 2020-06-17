@@ -3,8 +3,30 @@ import './index.css';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
 import NewProducts from '../../components/newProducts';
+import { connect } from 'react-redux';
+import { AppState } from '../../redux/state';
+import { getBrochuresAction } from '../../redux/Brochures/actions';
+import { getNewProductsAction } from '../../redux/newProducts/actions';
+import { getStockistAction } from '../../redux/stockists/actions';
+import { getBrandAction } from '../../redux/brands/actions';
+import { NewProductInfo } from '../../redux/newProducts/types';
 
-class Home extends React.Component {
+interface IProps {
+	getBrochuresAction: any,
+	getNewProductsAction: any,
+	getStockistAction: any,
+	getBrandAction: any,
+	newProducts: NewProductInfo[],
+}
+
+class Home extends React.Component<IProps, {}> {
+	componentDidMount() {
+		this.props.getNewProductsAction();
+		this.props.getBrochuresAction();
+		this.props.getStockistAction();
+		this.props.getBrandAction();
+	}
+
 	render(){
 		return(
 			<div className='main-container'>
@@ -26,7 +48,7 @@ class Home extends React.Component {
 				<div className='about-container'>
 					<div className='about-padding-container'>
 						<h2>New Products</h2>
-						<NewProducts />
+						<NewProducts products={this.props.newProducts}/>
 						<h2>Who We Are</h2>
 						<div className='about-pargraph-container'>
 							<p>Australian RV Accessories are quality importers, exporters and wholesalers of RV accessories to the caravan and motorhome industries of Australia and New Zealand.
@@ -44,4 +66,15 @@ class Home extends React.Component {
 	}
 }
 
-export default Home;
+const mapDispatch = {
+	getBrochuresAction: () => getBrochuresAction(),
+	getNewProductsAction: () => getNewProductsAction(),
+	getStockistAction: () => getStockistAction(),
+	getBrandAction: () => getBrandAction(),
+}
+
+const mapToProps = (state: AppState) => ({
+	newProducts: state.newProducts,
+})
+
+export default connect(mapToProps, mapDispatch)(Home);
