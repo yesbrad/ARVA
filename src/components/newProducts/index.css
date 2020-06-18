@@ -25,6 +25,16 @@
   background-color: white;
 }
 
+@media screen and (max-width: 1000px) {
+  .newProduct-container #newproduct-product-card {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 50rem;
+  }
+}
+
 .newProduct-container #newproduct-product-card .newProducts-info-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -44,8 +54,8 @@
 }
 
 .newProduct-container #newproduct-product-card img {
-  width: auto;
-  height: 60%;
+  width: 20rem;
+  height: auto;
 }
 
 .newProduct-container #newproduct-product-card h3 {

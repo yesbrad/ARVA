@@ -7,11 +7,13 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .header-container .arva-logo {
-  height: 100%;
-  width: 20rem;
+  width: 15rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -21,12 +23,41 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-left: 1em;
+}
+
+@media screen and (max-width: 1000px) {
+  .header-container .arva-logo {
+    width: 13rem;
+  }
 }
 
 .header-container .arva-logo img {
-  width: 70%;
-  height: 70%;
-  padding: 1rem;
+  width: 90%;
+  height: auto;
+}
+
+.header-container .nav-hamburger-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 20rem;
+  background-color: transparent;
+  border: none;
+}
+
+@media screen and (min-width: 1000px) {
+  .header-container .nav-hamburger-container {
+    display: none;
+  }
 }
 
 .header-container .right-container {
@@ -40,6 +71,12 @@
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+  .header-container .right-container {
+    display: none;
+  }
 }
 
 .header-container .right-container #circleDivider {
@@ -82,6 +119,10 @@
   border-radius: 50px;
 }
 
+.nav-container {
+  position: relative;
+}
+
 .navbar-container {
   background: darkgray;
   display: -webkit-box;
@@ -98,6 +139,12 @@
       -ms-flex-align: center;
           align-items: center;
   height: 3em;
+}
+
+@media screen and (max-width: 1000px) {
+  .navbar-container {
+    display: none;
+  }
 }
 
 .navbar-container #nav-link {
@@ -122,5 +169,53 @@
 
 .navbar-container #nav-link:hover {
   background-color: #f8a100;
+}
+
+.nav-container-hamburger {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 25rem;
+  background: white;
+  -webkit-box-shadow: 0px 0px 50px 0px black;
+          box-shadow: 0px 0px 50px 0px black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-transition: opacity 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out;
+}
+
+.nav-container-hamburger #nav-link {
+  font-size: 1.5em;
+  background-color: #f8a100;
+  color: white;
+  padding: 1rem;
+  text-decoration: none;
+  margin-bottom: 0.3rem;
+  border-radius: 20rem;
+  width: 10rem;
+  text-align: center;
+}
+
+.nav-container-hamburger button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 5rem;
+  height: 5rem;
+  background-color: transparent;
+  border: none;
 }
 /*# sourceMappingURL=index.css.map */

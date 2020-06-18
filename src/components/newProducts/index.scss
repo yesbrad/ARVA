@@ -11,6 +11,11 @@
 		flex-direction: row;
 		justify-content: space-evenly;
 		background-color: white;
+
+		@media screen and (max-width: 1000px) {
+			flex-direction: column;
+			height: 50rem;
+		}
 	
 		.newProducts-info-container {
 			@include FlexCenter;
@@ -20,8 +25,8 @@
 		}
 
 		img {
-			width: auto;
-			height: 60%;
+			width: 20rem;
+			height: auto;
 		}
 
 		h3 {

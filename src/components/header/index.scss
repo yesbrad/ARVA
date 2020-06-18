@@ -4,18 +4,32 @@
 	height: 15rem;
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
 
 	.arva-logo {
-		height: 100%;
-		width: 20rem;
+		width: 15rem;
 		@include FlexCenter;
-		// @include DBorder;
+		box-sizing: border-box;
+		margin-left: 1em;
+
+		@media screen and (max-width: $mobileSize) {
+			width: 13rem;
+		}
 
 		img {
-			width: 70%;
-			height: 70%;
-			padding: 1rem;
-			// @include DBorder;
+			width: 90%;
+			height: auto;
+		}
+	}
+	
+	.nav-hamburger-container {
+		@include FlexCenter;
+		width: 20rem;
+		background-color: transparent;
+		border: none;
+
+		@media screen and (min-width: $mobileSize) {
+			display: none;
 		}
 	}
 	
@@ -24,6 +38,10 @@
 		justify-content: flex-end;
 		align-items: center;
 		width: 100%;
+
+		@media screen and (max-width: $mobileSize) {
+			display: none;
+		}
 
 		#circleDivider {
 			width: 40rem;
@@ -41,6 +59,8 @@
 			justify-content: space-between;
 			margin-right: 5rem;
 			width: 14rem;
+
+
 
 			button {
 				background: none;
@@ -61,6 +81,10 @@
 	}
 }
 
+.nav-container {
+	position: relative;
+}
+
 .navbar-container {
 	background: darkgray;
 	display: flex;
@@ -68,6 +92,10 @@
 	justify-content: center;
 	align-items: center;
 	height: 3em;
+	
+	@media screen and (max-width: $mobileSize) {
+		display: none;
+	}
 
 	#nav-link {
 		// margin: 0 1em;
@@ -87,4 +115,39 @@
 	}
 }
 
+
+.nav-container-hamburger {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	height: 25rem;
+	background: white;
+	box-shadow: 0px 0px 50px 0px black;
+	@include FlexCenter;
+	flex-direction: column;
+	transition: opacity 200ms ease-in-out;
+
+	#nav-link {
+		font-size: 1.5em;
+		background-color: $primaryColor;
+		color: white;
+		padding: 1rem;
+		text-decoration: none;
+		margin-bottom: 0.3rem;
+		border-radius: 20rem;
+		width: 10rem;
+		text-align: center;
+	}
+
+	button {
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 5rem;
+		height: 5rem;
+		background-color: transparent;
+		border: none;
+	}
+}
 
