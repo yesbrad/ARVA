@@ -40,14 +40,14 @@ class Header extends React.Component<{}, IState> {
 					<Link id="nav-link" to="/brochures">BROCHURES</Link>
 					<Link id="nav-link" to="/contact">CONTACT</Link>
 				</nav>
-				<div style={{ userSelect: this.state.isMenuOpen ? "all" : 'none', opacity: this.state.isMenuOpen? 1 : 0}} className="nav-container-hamburger">
-					<button onClick={() => this.setState({ isMenuOpen: false })}><IoIosClose style={{width: '50px', height: '50px'}}/></button>
+				{/* {this.state.isMenuOpen && <div className="nav-container-hamburger">
+					<button onClick={() => this.setState({ isMenuOpen: false })}><IoIosClose style={{ width: '50px', height: '50px' }} /></button>
 					<Link id="nav-link" to="/">HOME</Link>
 					<Link id="nav-link" to="/stockists">STOCKISTS</Link>
 					<Link id="nav-link" to="/brands">BRANDS</Link>
 					<Link id="nav-link" to="/brochures">BROCHURES</Link>
 					<Link id="nav-link" to="/contact">CONTACT</Link>
-				</div>
+				</div>} */}
 			</div>
 		)
 	}
