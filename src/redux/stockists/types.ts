@@ -4,7 +4,7 @@ import { IAction } from "../state";
 /// Stockist Info Base Class
 export interface StockistInfo {
 	ID: string,
-	image64: string,
+	imageURI: string,
 	title: string
 }
 

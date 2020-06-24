@@ -36,11 +36,12 @@ class Stockists extends React.Component<IProps, {}> {
 				<div className="stockists-info-container">
 					<div className="stockists-grid-container">
 						{this.props.stockists && this.props.stockists.map((val) => {
+							console.log(val);
 							return (
-								<div className="stockists-card" key={val.ID}>
-									<div className="stockists-card-container">
-										<span>{val.title}</span>
-										<img src={val.image64}></img>
+								<div className="stockists-card-padding-container" key={val.ID}>
+									<div className="stockists-card">
+										<p>{val.title}</p>
+										<img src={val.imageURI}></img>
 									</div>
 								</div>
 							)

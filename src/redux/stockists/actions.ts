@@ -16,7 +16,7 @@ export const addStockistAction = (info: StockistInfo, user: User) => {
 				},
 				body: JSON.stringify({
 					ID: info.ID,
-					image64: info.image64,
+					image64: info.imageURI,
 					title: info.title
 				}),
 			});
@@ -29,7 +29,7 @@ export const addStockistAction = (info: StockistInfo, user: User) => {
 			payload: {
 				ID: info.ID,
 				title: info.title,
-				image64: info.image64,
+				imageURI: info.imageURI,
 			}
 		});
 	})
@@ -58,7 +58,7 @@ export const deleteStockistAction = (info: StockistInfo, user: User) => {
 			payload: {
 				ID: info.ID,
 				title: info.title,
-				image64: info.image64,
+				imageURI: info.imageURI,
 			}
 		});
 	})

@@ -4,47 +4,50 @@
 	@include FlexCenter;
 
 	.stockists-grid-container {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
 		// @include DBorder;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
 		width: 80%;
-		padding: 0.3rem;
 
-		@media screen and (max-width: 1000px) {
+		@media screen and (max-width: $mobileSize) {
 			grid-template-columns: repeat(1, 1fr);
 		}
-		
 
-		.stockists-card {
-			// width: 100%;
+		.stockists-card-padding-container{
 			// @include DBorder;
-			padding: 0.3rem;
-			
-			.stockists-card-container {
-				border-radius: 1rem;
-				width: 100%;
-				background-color: lightgray;
-				height: 35rem;
+			padding: 0.4rem;
+			box-sizing: border-box;
+
+			.stockists-card {
 				@include FlexCenter;
 				flex-direction: column;
-
+				max-width: 100%;
+				height: 35rem;
+				border-radius: 1rem;
+				background-color: lightgray;
+				
 				img {
-					// border-radius: 1.5rem;
-					width: 80%;
-					height: auto;
+					border-radius: 1.5rem;
+					width: 25rem;
+					height: 25rem;
+					object-fit: cover;
 					margin-bottom: 0.8rem;
+					z-index: 3;
+					
+					@media screen and (max-width: $mobileSize) {
+						width: 15rem;
+						height: 15rem;
+					}
 				}
-
-				span {
-					width: 80%;
+				
+				p {
 					font-weight: 700;
 					color: black;
-					font-size: 3rem;
+					font-size: 2rem;
+					overflow-wrap: anywhere;
+					text-overflow: clip;
 				}
-			}
-
+			}		
 		}
-
-
 	}
 }
