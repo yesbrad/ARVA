@@ -8,14 +8,24 @@
 	
 }
 .contact-content-container {
-	// @include DBorder;
 	width: 60%;
 	display: flex;
 	flex-direction: row;
 
+	@media screen and (max-width: $mobileSize) {
+		flex-direction: column;
+		width: 90%;
+	}
+
 	#contact-col {
 		width: 100%;
-		padding: 3rem;
+		padding: 2rem;
+		box-sizing: border-box;
+		
+		p {
+			overflow-wrap: break-word;
+		}
+
 
 		#bold {
 			font-weight: 700;
@@ -31,14 +41,13 @@
 
 	#contact-form {
 		width: 100%;
-		padding: 3rem;
-
-		p {
-
-		}
+		padding: 2rem;
+		box-sizing: border-box;
+		// @include DBorder;
+		display: flex;
+		flex-direction: column;
 
 		textarea {
-			min-width: 100%;
 			height: 1.2rem;
 			resize: none;
 			border-radius: 1rem;
@@ -60,6 +69,10 @@
 			font-size: 1.2em;
 			height: 3rem;
 			width: 8rem;
+		}
+
+		span {
+			margin-top: 1rem;
 		}
 	}
 }

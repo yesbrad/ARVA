@@ -4,8 +4,35 @@ import Header from '../../components/header';
 import Footer from '../../components/footer';
 import Banner from '../../components/banner';
 import BannerImage from '../../images/BannerImages/Banner6.jpg';
+import { apiURL } from '../../api';
 
-class Contact extends React.Component {
+interface IState {
+	sent: string,
+}
+
+class Contact extends React.Component<{}, IState> {
+	constructor(props: any) {
+		super(props);
+		this.state = {
+			sent: '',
+		}
+	}
+
+	onSendEmail = async () => {
+		if (this.state.sent === 'Sending') return;
+
+		this.setState({ sent: 'Sending' });
+
+		try {	
+			await fetch(`${apiURL}/sendMail`);
+			this.setState({ sent: 'Sent' });
+			console.log('Sent');
+		} catch (err) {
+			this.setState({ sent: 'Sending Failed' });
+			console.log('Message Failed')
+		}
+	}
+
 	render(){
 		return(
 			<div className='contact-main-container'>
@@ -49,11 +76,12 @@ class Contact extends React.Component {
 							<textarea id="name-box"></textarea>
 							<p>Email</p>
 							<textarea id="name-box"></textarea>
-							<p>Subjectline</p>
+							<p>Subject Line</p>
 							<textarea id="name-box"></textarea>
 							<p>Message</p>
 							<textarea id="large-box"></textarea>
-							<button>Submit</button>
+							<button onClick={this.onSendEmail}>Submit</button>
+							{this.state.sent && <span style={{color: 'green'}}>Sent</span>}
 						</div>
 					</div>
 				</div>
