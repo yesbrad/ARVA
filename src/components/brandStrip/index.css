@@ -1,0 +1,27 @@
+.brandstrip-container {
+  background: gray;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 5rem;
+}
+
+.brandstrip-container img {
+  width: auto;
+  height: 2.5rem;
+  margin: 0 3rem;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+  .brandstrip-container {
+    display: none;
+  }
+}
+/*# sourceMappingURL=index.css.map */

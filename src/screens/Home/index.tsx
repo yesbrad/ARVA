@@ -13,6 +13,7 @@ import { NewProductInfo } from '../../redux/newProducts/types';
 import Banner from '../../components/banner';
 import BannerImage from '../../images/BannerImages/Banner2.jpg';
 import { OpenCatalog } from '../../util';
+import BrandStrip from '../../components/brandStrip';
 
 interface IProps {
 	getBrochuresAction: any,
@@ -41,15 +42,7 @@ class Home extends React.Component<IProps, {}> {
 					buttonCallback={OpenCatalog}
 					buttonText="Open Catalog"
 				/>
-				<div className='brands-container'>
-					<img src={require('../../images/Brands/Layer1.png')} />
-					<img src={require('../../images/Brands/Layer2.png')} />
-					<img src={require('../../images/Brands/Layer3.png')} />
-					<img src={require('../../images/Brands/Layer4.png')} />
-					<img src={require('../../images/Brands/Layer5.png')} />
-					<img src={require('../../images/Brands/Layer6.png')} />
-					<img src={require('../../images/Brands/Layer7.png')} />
-				</div>
+				<BrandStrip />
 				<div className='about-container'>
 					<div className='about-padding-container'>
 						<h2>New Products</h2>

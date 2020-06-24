@@ -1,12 +1,3 @@
-.banner-container {
-  width: 100%;
-  height: 500px;
-  background-image: url("../../images/BannerImages/Banner1.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
 .contact-padding-wrapper {
   width: 100%;
   display: -webkit-box;
