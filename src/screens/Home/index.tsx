@@ -10,6 +10,9 @@ import { getNewProductsAction } from '../../redux/newProducts/actions';
 import { getStockistAction } from '../../redux/stockists/actions';
 import { getBrandAction } from '../../redux/brands/actions';
 import { NewProductInfo } from '../../redux/newProducts/types';
+import Banner from '../../components/banner';
+import BannerImage from '../../images/BannerImages/Banner2.jpg';
+import { OpenCatalog } from '../../util';
 
 interface IProps {
 	getBrochuresAction: any,
@@ -31,11 +34,13 @@ class Home extends React.Component<IProps, {}> {
 		return(
 			<div className='main-container'>
 				<Header />
-				<div className='banner-container'>
-					<h1>Welcome to Australian RV Accesories</h1>
-					<h2>Check out out Catalog!</h2>
-					<button>Explore</button>
-				</div>
+				<Banner
+					backgroundImage={BannerImage}
+					title="Welcome To Australian RV"
+					description="Checkout our 2021 catalog below!"
+					buttonCallback={OpenCatalog}
+					buttonText="Open Catalog"
+				/>
 				<div className='brands-container'>
 					<img src={require('../../images/Brands/Layer1.png')} />
 					<img src={require('../../images/Brands/Layer2.png')} />

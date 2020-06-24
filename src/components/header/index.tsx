@@ -2,6 +2,7 @@ import React from 'react';
 import './index.css';
 import { Link } from 'react-router-dom';
 import { IoMdMenu, IoIosClose } from 'react-icons/io';
+import { OpenCatalog } from '../../util';
 
 interface IState {
 	isMenuOpen: boolean,
@@ -25,8 +26,8 @@ class Header extends React.Component<{}, IState> {
 					<div className="right-container">
 						<div id='circleDivider' />
 						<div id='content-wrapper'>
-							<button id='login-button'>Login</button>
-							<button id='contact-button'>Contact Us</button>
+							{/* <button id='login-button'>Login</button> */}
+							<button id='contact-button' onClick={OpenCatalog}>View Catalog</button>
 						</div>
 					</div>
 					<button onClick={() => this.setState({ isMenuOpen: true })} className="nav-hamburger-container">
@@ -40,14 +41,14 @@ class Header extends React.Component<{}, IState> {
 					<Link id="nav-link" to="/brochures">BROCHURES</Link>
 					<Link id="nav-link" to="/contact">CONTACT</Link>
 				</nav>
-				{/* {this.state.isMenuOpen && <div className="nav-container-hamburger">
+				{this.state.isMenuOpen && <div className="nav-container-hamburger">
 					<button onClick={() => this.setState({ isMenuOpen: false })}><IoIosClose style={{ width: '50px', height: '50px' }} /></button>
 					<Link id="nav-link" to="/">HOME</Link>
 					<Link id="nav-link" to="/stockists">STOCKISTS</Link>
 					<Link id="nav-link" to="/brands">BRANDS</Link>
 					<Link id="nav-link" to="/brochures">BROCHURES</Link>
 					<Link id="nav-link" to="/contact">CONTACT</Link>
-				</div>} */}
+				</div>}
 			</div>
 		)
 	}

@@ -8,6 +8,8 @@ import { getBrandAction } from '../../redux/brands/actions';
 import { connect } from 'react-redux';
 import { getBrochuresAction } from '../../redux/Brochures/actions';
 import { BrochureInfo } from '../../redux/Brochures/types';
+import Banner from '../../components/banner';
+import BannerImage from '../../images/BannerImages/Banner5.jpg';
 
 interface IProps {
 	brochures?: BrochureInfo[],
@@ -23,9 +25,11 @@ class Brochures extends React.Component<IProps, {}> {
 		return(
 			<div className='main-container'>
 				<Header />
-				<div className='banner-container'>
-					<h1>BROCHURES</h1>
-				</div>
+				<Banner
+					backgroundImage={BannerImage}
+					title="Brochures"
+					description="Have a look at these Select Brochures!"
+				/>
 				<div className="brochure-info-container">
 					<div className="brochure-grid-container">
 						{this.props.brochures && this.props.brochures.map((val) => {

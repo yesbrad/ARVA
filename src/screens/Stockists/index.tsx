@@ -6,6 +6,8 @@ import { StockistInfo } from '../../redux/stockists/types';
 import { connect } from 'react-redux';
 import { AppState } from '../../redux/state';
 import { getStockistAction } from '../../redux/stockists/actions';
+import Banner from '../../components/banner';
+import BannerImage from '../../images/BannerImages/Banner3.jpg';
 
 interface IState {
 	stockInfo: StockistInfo[],
@@ -26,9 +28,11 @@ class Stockists extends React.Component<IProps, {}> {
 		return(
 			<div className='stockists-main-container'>
 				<Header />
-				<div className='banner-container'>
-					<h1>STOCKISTS</h1>
-				</div>
+				<Banner
+					backgroundImage={BannerImage}
+					title="Stockists"
+					description="Who Has Our Product In Stock!"
+				/>
 				<div className="stockists-info-container">
 					<div className="stockists-grid-container">
 						{this.props.stockists && this.props.stockists.map((val) => {

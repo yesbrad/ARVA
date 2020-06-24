@@ -103,13 +103,16 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-right: 5rem;
-  width: 14rem;
 }
 
 .header-container .right-container #content-wrapper button {
   background: none;
   border: none;
   font-size: 1rem;
+}
+
+.header-container .right-container #content-wrapper #contact-button:hover {
+  background: lightgray;
 }
 
 .header-container .right-container #content-wrapper #contact-button {
@@ -176,7 +179,8 @@
   top: 0;
   right: 0;
   left: 0;
-  height: 25rem;
+  padding: 3rem 0;
+  z-index: 2;
   background: white;
   -webkit-box-shadow: 0px 0px 50px 0px black;
           box-shadow: 0px 0px 50px 0px black;

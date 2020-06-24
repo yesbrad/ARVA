@@ -6,6 +6,8 @@ import { BrandInfo } from '../../redux/brands/types';
 import { AppState } from '../../redux/state';
 import { getBrandAction } from '../../redux/brands/actions';
 import { connect } from 'react-redux';
+import Banner from '../../components/banner';
+import BannerImage from '../../images/BannerImages/Banner4.jpg';
 
 interface IProps {
 	brands?: BrandInfo[],
@@ -21,9 +23,11 @@ class Brands extends React.Component<IProps, {}> {
 		return(
 			<div className='main-container'>
 				<Header />
-				<div className='banner-container'>
-					<h1>BRANDS</h1>
-				</div>
+				<Banner
+					backgroundImage={BannerImage}
+					title="Brands"
+					description="Some top Brands that we Supply!"
+				/>
 				<div className='brands-container'>
 					<img src={require('../../images/Brands/Layer1.png')} />
 					<img src={require('../../images/Brands/Layer2.png')} />

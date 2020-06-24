@@ -2,15 +2,19 @@ import React from 'react';
 import './index.css';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
+import Banner from '../../components/banner';
+import BannerImage from '../../images/BannerImages/Banner6.jpg';
 
 class Contact extends React.Component {
 	render(){
 		return(
 			<div className='contact-main-container'>
 				<Header />
-				<div className='banner-container'>
-
-				</div>
+				<Banner
+					backgroundImage={BannerImage}
+					title="Contact Us"
+					description="Please get in touch with us if you have any questions!"
+				/>
 				<div className='contact-padding-wrapper'>
 					<div className="contact-content-container">
 						<div id="contact-col">

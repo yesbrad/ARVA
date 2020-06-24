@@ -17,4 +17,8 @@ export const URLtoBASE64Raw = (file: File) => {
   
 	  reader.readAsDataURL(file);
 	})
-  }
+}
+  
+export const OpenCatalog = function () {
+	window.open('https://firebasestorage.googleapis.com/v0/b/arva-3193d.appspot.com/o/mainCatalog%2Fcatalog.pdf?alt=media&token=3c242b64-39ed-4495-8a0e-d58bd9a7e77e');
+}
