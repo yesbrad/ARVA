@@ -1,5 +1,5 @@
 .header-container {
-  height: 15rem;
+  height: 10rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -13,7 +13,7 @@
 }
 
 .header-container .arva-logo {
-  width: 15rem;
+  width: 10rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -179,7 +179,6 @@
   top: 0;
   right: 0;
   left: 0;
-  padding: 3rem 0;
   z-index: 2;
   background: white;
   -webkit-box-shadow: 0px 0px 50px 0px black;
@@ -197,8 +196,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-transition: opacity 200ms ease-in-out;
-  transition: opacity 200ms ease-in-out;
+  overflow: hidden;
 }
 
 .nav-container-hamburger #nav-link {
