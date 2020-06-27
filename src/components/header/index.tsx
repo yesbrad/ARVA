@@ -42,7 +42,7 @@ const Header = () => {
 				<Link id="nav-link" to="/contact">CONTACT</Link>
 			</nav>
 			<animated.div style={springProps} className="nav-container-hamburger">
-				<button onClick={() => setisMenuOpen(false)}><IoIosClose style={{ width: '50px', height: '50px' }} /></button>
+				<button onClick={() => setisMenuOpen(false)}><IoIosClose style={{ width: '100px', height: '100px' }} /></button>
 				<Link id="nav-link" to="/">HOME</Link>
 				<Link id="nav-link" to="/stockists">STOCKISTS</Link>
 				<Link id="nav-link" to="/brands">BRANDS</Link>
