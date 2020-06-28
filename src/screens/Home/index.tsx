@@ -15,6 +15,7 @@ import BannerImage from '../../images/BannerImages/Banner2.jpg';
 import { OpenCatalog } from '../../util';
 import BrandStrip from '../../components/brandStrip';
 
+
 interface IProps {
 	getBrochuresAction: any,
 	getNewProductsAction: any,
@@ -32,6 +33,8 @@ class Home extends React.Component<IProps, {}> {
 	}
 
 	render(){
+		console.log(this.props.newProducts);
+
 		return(
 			<div className='main-container'>
 				<Header />
@@ -43,12 +46,12 @@ class Home extends React.Component<IProps, {}> {
 					buttonText="Open Catalog"
 				/>
 				<BrandStrip />
-				<div className='about-container'>
-					<div className='about-padding-container'>
+				<div className='home-container'>
+					<div className='home-padding-container'>
 						<h2>New Products</h2>
 						<NewProducts products={this.props.newProducts}/>
 						<h2>Who We Are</h2>
-						<div className='about-pargraph-container'>
+						<div className='home-pargraph-container'>
 							<p>Australian RV Accessories are quality importers, exporters and wholesalers of RV accessories to the caravan and motorhome industries of Australia and New Zealand.
 
 		Australian RV Accessories are one of the foremost RV and caravan accessory suppliers in Australia. Our aim is to provide a quality service to the wholesale RV market and give customers an alternative and equitable supply with new and innovative products.</p>

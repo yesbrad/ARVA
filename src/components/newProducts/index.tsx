@@ -13,21 +13,25 @@ let OrdedProducts = [] as NewProductInfo[];
 let inverseIndex = false;
 
 const NewProducts = ( props: IProps)	=> {
-	const [currentIndex, SetCurrentIndex] = useState(0	);
+	const [currentIndex, SetCurrentIndex] = useState(2);
 	
-	const size = 50;
+	let isSmall = window.screen.width < 1000;
+	const size = isSmall ? 100 : 25;
 
 	useEffect(() => {
 		if(props.products && OrdedProducts.length === 0){
 			OrdedProducts = props.products;
 			const timer = setInterval(() =>{
 				if(OrdedProducts) {
+					isSmall = window.screen.width < 1000;
+				
+
 					SetCurrentIndex(prev => {
 						if(prev > OrdedProducts.length - 2){
 							inverseIndex = true;
 						}
 
-						if(prev <= 1){
+						if(prev <= (isSmall ? 0 : 3)){
 							inverseIndex = false;
 						}
 
@@ -44,7 +48,7 @@ const NewProducts = ( props: IProps)	=> {
 
 	const RenderProduct = (val: NewProductInfo, style: any, index: number ) => (
 		<animated.div style={style} key={val.newProductID} id='newproduct-product-card'>
-			<img src={val.newProductImage}></img>
+			<div id="product-image-container" style={{ backgroundImage: `url(${val.newProductImage})`}}></div>
 			<div className="newProducts-info-container">
 				<h3>{val.newProductName}</h3>
 				<span>{val.newProductDescription}</span>

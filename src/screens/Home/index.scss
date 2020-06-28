@@ -1,26 +1,38 @@
 @import '../../styles/config.scss';
 
-.about-container {
+.home-container {
 	@include FlexCenter;
 	margin-bottom: 3rem;
 
-	.about-padding-container {
-		min-width: 80%;
-		// @include DBorder;
+	.home-padding-container {
+		min-width: 100%;
 		
-		.about-pargraph-container {
+		.home-pargraph-container {
 			display: flex;
 			flex-direction: row;
-			justify-content: space-between;
-			
+			// justify-content: space-between;
+			padding: 0 5rem;
+			box-sizing: border-box;
+
+			@media screen and (max-width: $mobileSize) {
+				flex-direction: column;
+			}
+
 			p {
-				width: 46%;
 				line-height: 1.5rem;
+				padding: 1rem;
+				box-sizing: border-box;
+
+				@media screen and (max-width: $mobileSize) {
+					padding: 0;
+				}
 			}
 		}
 
 		h2 {
-			font-size: 2rem;
+			font-size: 1.5rem;
+			padding: 0 5rem;
+			box-sizing: border-box;
 		}
 	}
 }
