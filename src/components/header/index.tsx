@@ -5,17 +5,12 @@ import { IoMdMenu, IoIosClose } from 'react-icons/io';
 import { OpenCatalog } from '../../util';
 import { useSpring, animated} from 'react-spring';
 
-interface IState {
-	isMenuOpen: boolean,
-}
-
 const Header = () => {
 	const [isMenuOpen, setisMenuOpen] = useState(true);
 
 	const springProps = useSpring({
 		height: isMenuOpen ? '30rem' : '0',
 	})
-
 
 	return(
 		<div className="nav-container">
