@@ -25,7 +25,7 @@ const Header = () => {
 						<button id='contact-button' onClick={OpenCatalog}>View Catalog</button>
 					</div>
 				</div>
-				<button onClick={() => setisMenuOpen(true)} className="nav-hamburger-container">
+				<button onClick={() => setisMenuOpen(false)} className="nav-hamburger-container">
 					<IoMdMenu style={{width: '50px', height: '50px'}} />
 				</button>
 			</div>
