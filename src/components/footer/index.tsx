@@ -7,13 +7,14 @@ class Footer extends React.Component {
 		return(
 			<div className='footer-container'>
 				<nav>
-					<Link id="footer-link" to="/">HOME</Link>
-					<Link id="footer-link" to="/about-us">ABOUT</Link>
-					<Link id="footer-link" to="/brands">BRANDS</Link>
-					<Link id="footer-link" to="/contact">CONTACT</Link>
+				<Link id="footer-link" to="/">HOME</Link>
+				<Link id="footer-link" to="/stockists">STOCKISTS</Link>
+				<Link id="footer-link" to="/brands">BRANDS</Link>
+				<Link id="footer-link" to="/brochures">BROCHURES</Link>
+				<Link id="footer-link" to="/contact">CONTACT</Link>
 				</nav>
 				<p>
-					Copyright Australian RV Accesories 2020
+					&copy; 2020 Australian RV Accesories
 				</p>
 			</div>
 		)

@@ -6,7 +6,7 @@ import { OpenCatalog } from '../../util';
 import { useSpring, animated} from 'react-spring';
 
 const Header = () => {
-	const [isMenuOpen, setisMenuOpen] = useState(true);
+	const [isMenuOpen, setisMenuOpen] = useState(false);
 
 	const springProps = useSpring({
 		height: isMenuOpen ? '30rem' : '0',
@@ -25,7 +25,7 @@ const Header = () => {
 						<button id='contact-button' onClick={OpenCatalog}>View Catalog</button>
 					</div>
 				</div>
-				<button onClick={() => setisMenuOpen(false)} className="nav-hamburger-container">
+				<button onClick={() => setisMenuOpen(true)} className="nav-hamburger-container">
 					<IoMdMenu style={{width: '50px', height: '50px'}} />
 				</button>
 			</div>
