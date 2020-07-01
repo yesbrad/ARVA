@@ -2,7 +2,7 @@ import React, {useEffect, useState, useRef} from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './index.css';
 import { NewProductInfo } from '../../redux/newProducts/types';
-import { Carousel } from 'react-responsive-carousel';
+import Loader from 'react-loader-spinner'
 import { useSprings, animated } from 'react-spring';
 
 interface IProps {
@@ -61,7 +61,18 @@ const NewProducts = ( props: IProps)	=> {
 	
 	return(
 		<div className="newProduct-container">
-			{springs.map((item, i) => RenderProduct(props.products[i], item, i))}
+			{props.products && springs.map((item, i) => RenderProduct(props.products[i], item, i))}
+			<div className="newProduct-spinner-container">
+				<Loader
+					className="newProduct-spinner"
+					type="ThreeDots"
+					color="#222"
+					height={200}
+					width={200}
+					visible
+				/>
+				<span>Loading Products...</span>
+			</div>
 		</div>
 	)
 }

@@ -10,6 +10,7 @@ import { getBrochuresAction } from '../../redux/Brochures/actions';
 import { BrochureInfo } from '../../redux/Brochures/types';
 import Banner from '../../components/banner';
 import BannerImage from '../../images/BannerImages/Banner5.jpg';
+import LoadingSpinner from '../../components/loadingSpinner';
 
 interface IProps {
 	brochures?: BrochureInfo[],
@@ -30,6 +31,7 @@ class Brochures extends React.Component<IProps, {}> {
 					title="Brochures"
 					description="Have a look at these Select Brochures!"
 				/>
+				{this.props.brochures.length === 0 && <LoadingSpinner />}
 				<div className="brochure-info-container">
 					<div className="brochure-grid-container">
 						{this.props.brochures && this.props.brochures.map((val) => {

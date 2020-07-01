@@ -8,6 +8,7 @@ import { AppState } from '../../redux/state';
 import { getStockistAction } from '../../redux/stockists/actions';
 import Banner from '../../components/banner';
 import BannerImage from '../../images/BannerImages/Banner7.jpg';
+import LoadingSpinner from '../../components/loadingSpinner';
 
 interface IState {
 	stockInfo: StockistInfo[],
@@ -33,6 +34,7 @@ class Stockists extends React.Component<IProps, {}> {
 					title="Stockists"
 					description="Who Has Our Product In Stock!"
 				/>
+				{this.props.stockists.length === 0 && <LoadingSpinner />}
 				<div className="stockists-info-container">
 					<div className="stockists-grid-container">
 						{this.props.stockists && this.props.stockists.map((val) => {

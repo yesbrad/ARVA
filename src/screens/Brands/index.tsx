@@ -8,6 +8,7 @@ import { getBrandAction } from '../../redux/brands/actions';
 import { connect } from 'react-redux';
 import Banner from '../../components/banner';
 import BannerImage from '../../images/BannerImages/Banner4.jpg';
+import LoadingSpinner from '../../components/loadingSpinner';
 
 interface IProps {
 	brands?: BrandInfo[],
@@ -28,6 +29,7 @@ class Brands extends React.Component<IProps, {}> {
 					title="Brands"
 					description="Some Top Brands That We Supply!"
 				/>
+				{this.props.brands.length === 0 && <LoadingSpinner />}
 				<div className="brand-info-container">
 					<div className="brand-grid-container">
 						{this.props.brands && this.props.brands.map((val) => {

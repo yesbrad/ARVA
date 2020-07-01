@@ -114,11 +114,11 @@ class Admin extends React.Component<{}, IState> {
 						<Route path="/admin/brands">
 							<AdminBrands user={this.state.user} />
 						</Route>
-						<Route path="/admin">
-							<AdminNewProducts user={this.state.user} />
-						</Route>
 						<Route path="/admin/brochures">
 							<AdminBrochures user={this.state.user} />
+						</Route>
+						<Route path="/admin">
+							<AdminNewProducts user={this.state.user} />
 						</Route>
 					</Switch>
 				</div> :

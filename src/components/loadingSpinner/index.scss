@@ -1,0 +1,7 @@
+@import '../../styles/config.scss';
+
+.loadingSpinner-container {
+	@include FlexCenter;
+	width: 100%;
+	height: 20rem;
+}
