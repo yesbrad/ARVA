@@ -8,6 +8,7 @@
 		grid-template-columns: repeat(1, 1fr);
 		// @include DBorder;
 		width: 80%;
+		margin: 0.3rem 0;
 
 		@media screen and (max-width: 1000px) {
 			grid-template-columns: repeat(1, 1fr);
@@ -15,11 +16,11 @@
 		}
 
 		.brochure-card {
-			padding: 2rem;
+			padding: 0.3rem;
 			
 			.brochure-card-container {
 				width: 100%;
-				border-radius: 2rem;
+				// border-radius: 2rem;
 				background-color: lightgray;
 				@include FlexCenter;
 				flex-direction: row;

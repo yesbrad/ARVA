@@ -8,7 +8,6 @@ import { getBrandAction } from '../../redux/brands/actions';
 import { connect } from 'react-redux';
 import Banner from '../../components/banner';
 import BannerImage from '../../images/BannerImages/Banner4.jpg';
-import BrandStrip from '../../components/brandStrip';
 
 interface IProps {
 	brands?: BrandInfo[],
@@ -29,12 +28,11 @@ class Brands extends React.Component<IProps, {}> {
 					title="Brands"
 					description="Some Top Brands That We Supply!"
 				/>
-				{/* <BrandStrip /> */}
 				<div className="brand-info-container">
 					<div className="brand-grid-container">
 						{this.props.brands && this.props.brands.map((val) => {
 							return (
-								<div className="brand-card">
+								<div key={val.brandID} className="brand-card">
 									<div className="brand-card-container">
 										<div className="brand-card-image" style={{backgroundImage: `url(${val.brandImage})`}} />
 									</div>

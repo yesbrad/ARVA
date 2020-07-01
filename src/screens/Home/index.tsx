@@ -33,8 +33,6 @@ class Home extends React.Component<IProps, {}> {
 	}
 
 	render(){
-		console.log(this.props.newProducts);
-
 		return(
 			<div className='main-container'>
 				<Header />

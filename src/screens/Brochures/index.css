@@ -16,6 +16,7 @@
   -ms-grid-columns: (1fr)[1];
       grid-template-columns: repeat(1, 1fr);
   width: 80%;
+  margin: 0.3rem 0;
 }
 
 @media screen and (max-width: 1000px) {
@@ -27,12 +28,11 @@
 }
 
 .brochure-info-container .brochure-grid-container .brochure-card {
-  padding: 2rem;
+  padding: 0.3rem;
 }
 
 .brochure-info-container .brochure-grid-container .brochure-card .brochure-card-container {
   width: 100%;
-  border-radius: 2rem;
   background-color: lightgray;
   display: -webkit-box;
   display: -ms-flexbox;
