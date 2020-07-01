@@ -1,63 +1,41 @@
 @import '../../styles/config.scss';
 
-.about-container {
-	@include FlexCenter;
-	margin-bottom: 3rem;
-	flex-direction: column;
-	// @include DBorder;
-
-	h2 {
-		margin-top: 2rem;
-		width: 100%;
-	}
-
-	.about-padding-container {
-		width: 50%;
-		
-		.about-pargraph-container {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
-			
-			p {
-				width: 46%;
-				line-height: 1.5rem;
-			}
-		}
-	}
-}
-
 .brand-info-container {
 	@include FlexCenter;
 
 	.brand-grid-container {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
 		// @include DBorder;
 		width: 80%;
+		margin: 0.3rem 0;
 
-		@media screen and (max-width: 1000px) {
+		@media screen and (max-width: $mobileSize) {
 			grid-template-columns: repeat(1, 1fr);
+			width: 95%;
 		}
 
 		.brand-card {
 			// width: 100%;
 			// @include DBorder;
-			padding: 2rem;
-			
+			padding: 0.3rem;
+			box-sizing: border-box;
+
+
 			.brand-card-container {
-				width: 25rem;
-				border-radius: 25rem;
+				width: 100%;
+				height: 30rem;
 				background-color: lightgray;
-				height: 25rem;
 				@include FlexCenter;
 				flex-direction: column;
 
-				img {
+				.brand-card-image {
 					border-radius: 1.5rem;
-					width: 50%;
-					height: auto;
-					margin-bottom: 0.8rem;
+					width: 80%;
+					height: 80%;
+					background-repeat: no-repeat;
+					background-size: contain;
+					background-position: center;
 				}
 
 				span {

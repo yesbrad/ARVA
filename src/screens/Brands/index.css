@@ -1,47 +1,3 @@
-.about-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-bottom: 3rem;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.about-container h2 {
-  margin-top: 2rem;
-  width: 100%;
-}
-
-.about-container .about-padding-container {
-  width: 50%;
-}
-
-.about-container .about-padding-container .about-pargraph-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.about-container .about-padding-container .about-pargraph-container p {
-  width: 46%;
-  line-height: 1.5rem;
-}
-
 .brand-info-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -57,27 +13,30 @@
 .brand-info-container .brand-grid-container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
   width: 80%;
+  margin: 0.3rem 0;
 }
 
 @media screen and (max-width: 1000px) {
   .brand-info-container .brand-grid-container {
     -ms-grid-columns: (1fr)[1];
         grid-template-columns: repeat(1, 1fr);
+    width: 95%;
   }
 }
 
 .brand-info-container .brand-grid-container .brand-card {
-  padding: 2rem;
+  padding: 0.3rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .brand-info-container .brand-grid-container .brand-card .brand-card-container {
-  width: 25rem;
-  border-radius: 25rem;
+  width: 100%;
+  height: 30rem;
   background-color: lightgray;
-  height: 25rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -93,11 +52,13 @@
           flex-direction: column;
 }
 
-.brand-info-container .brand-grid-container .brand-card .brand-card-container img {
+.brand-info-container .brand-grid-container .brand-card .brand-card-container .brand-card-image {
   border-radius: 1.5rem;
-  width: 50%;
-  height: auto;
-  margin-bottom: 0.8rem;
+  width: 80%;
+  height: 80%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 .brand-info-container .brand-grid-container .brand-card .brand-card-container span {

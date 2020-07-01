@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { AppState } from '../../redux/state';
 import { getStockistAction } from '../../redux/stockists/actions';
 import Banner from '../../components/banner';
-import BannerImage from '../../images/BannerImages/Banner3.jpg';
+import BannerImage from '../../images/BannerImages/Banner7.jpg';
 
 interface IState {
 	stockInfo: StockistInfo[],

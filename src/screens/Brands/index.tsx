@@ -27,7 +27,7 @@ class Brands extends React.Component<IProps, {}> {
 				<Banner
 					backgroundImage={BannerImage}
 					title="Brands"
-					description="Some top Brands that we Supply!"
+					description="Some Top Brands That We Supply!"
 				/>
 				{/* <BrandStrip /> */}
 				<div className="brand-info-container">
@@ -36,7 +36,7 @@ class Brands extends React.Component<IProps, {}> {
 							return (
 								<div className="brand-card">
 									<div className="brand-card-container">
-										<img src={val.brandImage}></img>
+										<div className="brand-card-image" style={{backgroundImage: `url(${val.brandImage})`}} />
 									</div>
 								</div>
 							)
