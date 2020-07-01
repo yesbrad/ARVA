@@ -6,6 +6,7 @@ import AdminNewProducts from './NewProducts';
 import AdminBrochures from './Brochures';
 import * as firebase from "firebase/app";
 import "firebase/auth";
+import { Link, Switch, Route } from 'react-router-dom';
 
 var firebaseConfig = {
     apiKey: process.env.REACT_APP_AUKEY,
@@ -99,18 +100,33 @@ class Admin extends React.Component<{}, IState> {
 			<div className='admin-main-container'>
 				{this.state.user ? <div>
 					<nav className="admin-nav">
-						<button onClick={() => this.signOut()}>SIGN OUT</button>
+						<div id="admin-nav-logo"></div>
+						<Link id="admin-nav-link" to="/admin" >NEW PRODUCTS</Link>
+						<Link id="admin-nav-link" to="/admin/stockists" >STOCKISTS</Link>
+						<Link id="admin-nav-link" to="/admin/brands" >BRANDS</Link>
+						<Link id="admin-nav-link" to="/admin/brochures" >BROCHURES</Link>
+						<button id="admin-nav-signout" onClick={() => this.signOut()}>SIGN OUT</button>
 					</nav>
-					<AdminStockists user={this.state.user} />
-					<AdminBrands user={this.state.user} />
-					<AdminNewProducts user={this.state.user} />
-					<AdminBrochures user={this.state.user} />
+					<Switch>
+						<Route path="/admin/stockists">
+							<AdminStockists user={this.state.user} />
+						</Route>
+						<Route path="/admin/brands">
+							<AdminBrands user={this.state.user} />
+						</Route>
+						<Route path="/admin">
+							<AdminNewProducts user={this.state.user} />
+						</Route>
+						<Route path="/admin/brochures">
+							<AdminBrochures user={this.state.user} />
+						</Route>
+					</Switch>
 				</div> :
 				<div className="admin-login-container">
 					<img src={require('../../images/Logo.png')}></img>
 					<input value={this.state.emailInput} onChange={res => this.setState({ emailInput: res.target.value })}></input>
-					<input value={this.state.passwordInput} onChange={res => this.setState({ passwordInput: res.target.value })}></input>
-					<button onClick={() => this.signIn()}>{this.state.loggingIn ? 'Logging In' : 'Login'}</button>
+					<input type="password" value={this.state.passwordInput} onChange={res => this.setState({ passwordInput: res.target.value })}></input>
+					<button type="submit" onClick={() => this.signIn()}>{this.state.loggingIn ? 'Logging In' : 'Login'}</button>
 					{this.state.loginError && < span > { this.state.loginError }</span>}
 				</div>}
 			</div>
