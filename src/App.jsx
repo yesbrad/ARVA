@@ -14,6 +14,7 @@ import {
 	useLocation,
 } from 'react-router-dom';
 import Brochures from './screens/Brochures';
+import Catalog from './screens/Catalog';
 
 const AppAnimate = () => {
 	const location = useLocation();
@@ -25,14 +26,15 @@ const AppAnimate = () => {
 
 	return transitions.map(({ item: location, props, key }) => (
 		<animated.div key={key} style={props}>
-				<Switch location={location}>
-					<Route exact path="/" component={Home} />
-					<Route path="/brands" component={Brands}/>
-					<Route path="/stockists"  component={Stockists} />
-					<Route path="/contact" component={Contact}/>
-					<Route path="/brochures"  component={Brochures}/>
-					<Route path="/admin" component={Admin}/>
-				</Switch>
+			<Switch location={location}>
+				<Route exact path="/" component={Home} />
+				<Route path="/brands" component={Brands}/>
+				<Route path="/stockists"  component={Stockists} />
+				<Route path="/contact" component={Contact}/>
+				<Route path="/brochures" component={Brochures} />
+				<Route path="/catalog" component={Catalog}/>
+				<Route path="/admin" component={Admin}/>
+			</Switch>
 		</animated.div>
 	));
 }

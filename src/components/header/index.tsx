@@ -10,7 +10,13 @@ const Header = () => {
 
 	const springProps = useSpring({
 		height: isMenuOpen ? '30rem' : '0',
+		opacity: isMenuOpen ? 1 : 0,
 	})
+
+	const OpenMenu = (open: boolean) => {
+		console.log(isMenuOpen);
+		setisMenuOpen(open);
+	}
 
 	return(
 		<div className="nav-container">
@@ -22,10 +28,10 @@ const Header = () => {
 					<div id='circleDivider' />
 					<div id='content-wrapper'>	
 						{/* <button id='login-button'>Login</button> */}
-						<button id='contact-button' onClick={OpenCatalog}>View Catalog</button>
+						<Link id='contact-button' to="/catalog">View Catalog</Link>
 					</div>
 				</div>
-				<button onClick={() => setisMenuOpen(true)} className="nav-hamburger-container">
+				<button onClick={() => OpenMenu(true)} className="nav-hamburger-container">
 					<IoMdMenu style={{width: '50px', height: '50px'}} />
 				</button>
 			</div>
@@ -37,8 +43,9 @@ const Header = () => {
 				<Link id="nav-link" to="/contact">CONTACT</Link>
 			</nav>
 			<animated.div style={springProps} className="nav-container-hamburger">
-				<button onClick={() => setisMenuOpen(false)}><IoIosClose style={{ width: '100px', height: '100px' }} /></button>
+				<button onClick={() => OpenMenu(false)}><IoIosClose style={{ width: '100px', height: '100px' }} /></button>
 				<Link id="nav-link" to="/">HOME</Link>
+				<Link id="nav-link" to="/catalog">CATALOG</Link>
 				<Link id="nav-link" to="/stockists">STOCKISTS</Link>
 				<Link id="nav-link" to="/brands">BRANDS</Link>
 				<Link id="nav-link" to="/brochures">BROCHURES</Link>
