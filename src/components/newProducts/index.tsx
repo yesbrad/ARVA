@@ -9,25 +9,21 @@ interface IProps {
 	products: NewProductInfo[]
 }
 
-let OrdedProducts = [] as NewProductInfo[];
 let inverseIndex = false;
 
 const NewProducts = ( props: IProps)	=> {
-	const [currentIndex, SetCurrentIndex] = useState(2);
+	const [currentIndex, SetCurrentIndex] = useState(3);
 	
 	let isSmall = window.screen.width < 1000;
 	const size = isSmall ? 100 : 25;
 
 	useEffect(() => {
-		if(props.products && OrdedProducts.length === 0){
-			OrdedProducts = props.products;
+		if(props.products){
 			const timer = setInterval(() =>{
-				if(OrdedProducts) {
 					isSmall = window.screen.width < 1000;
 				
-
 					SetCurrentIndex(prev => {
-						if(prev > OrdedProducts.length - 2){
+						if(prev > props.products.length - 2){
 							inverseIndex = true;
 						}
 
@@ -37,7 +33,6 @@ const NewProducts = ( props: IProps)	=> {
 
 						return inverseIndex ? prev - 1 : prev + 1;
 					});
-				}	
 			}, 2000);
 
 			return () => {
@@ -56,7 +51,7 @@ const NewProducts = ( props: IProps)	=> {
 		</animated.div>
 	);
 
-	const springs = useSprings(OrdedProducts.length, OrdedProducts.map((info, i) => {
+	const springs = useSprings(props.products.length, props.products.map((info, i) => {
 		return {
 			opacity: 1,
 			width: `${size}%`,
@@ -66,7 +61,7 @@ const NewProducts = ( props: IProps)	=> {
 	
 	return(
 		<div className="newProduct-container">
-			{springs.map((item, i) => RenderProduct(OrdedProducts[i], item, i))}
+			{springs.map((item, i) => RenderProduct(props.products[i], item, i))}
 		</div>
 	)
 }
