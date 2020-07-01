@@ -41,10 +41,16 @@
 				
 				p {
 					font-weight: 700;
+					width: 25rem;
 					color: black;
 					font-size: 2rem;
 					overflow-wrap: anywhere;
 					text-overflow: clip;
+
+					@media screen and (max-width: $mobileSize) {
+						width: 15rem;
+						height: 15rem;
+					}
 				}
 			}		
 		}

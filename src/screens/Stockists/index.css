@@ -71,9 +71,17 @@
 
 .stockists-info-container .stockists-grid-container .stockists-card-padding-container .stockists-card p {
   font-weight: 700;
+  width: 25rem;
   color: black;
   font-size: 2rem;
   overflow-wrap: anywhere;
   text-overflow: clip;
+}
+
+@media screen and (max-width: 1000px) {
+  .stockists-info-container .stockists-grid-container .stockists-card-padding-container .stockists-card p {
+    width: 15rem;
+    height: 15rem;
+  }
 }
 /*# sourceMappingURL=index.css.map */
