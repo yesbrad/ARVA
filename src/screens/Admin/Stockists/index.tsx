@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import React from 'react';
 import '../index.css';
 import { apiURL } from '../../../api';
@@ -7,6 +8,7 @@ import { addStockistAction, getStockistAction, deleteStockistAction } from '../.
 import { URLtoBASE64Raw } from '../../../util';
 import { User } from '../index';
 import { AppState } from '../../../redux/state';
+const csv = require('csvtojson')
 
 interface IState {
 	stockInfo: StockistInfo[],
@@ -44,47 +46,46 @@ class AdminStockists extends React.Component<IProps, IState> {
 		this.pullStockist();
 	}
 
+	onReadCSV = (file: File) => new Promise((res, err) => {
+		var reader = new FileReader();
+
+		reader.onload = () => {
+			res(reader.result)
+		}
+
+		reader.onerror = () => {
+			err("Failed");
+		}
+
+		reader.readAsText(file);
+	})
+
 	onAddStockist = async () => {
 		console.log('Adding Stockist');
-		
-		if(this.state.uploading) return;
-
-		this.setState({uploading: true, error: ''});
-
-		const { stockID, stockTitle, stockImageURI} = this.state;
-
-		let takenID: boolean = false;
-
-		this.props.stockists.map((prod) => {
-			if (prod.ID === stockID) {
-				this.setState({ error: 'ID Already Taken', uploading: false });
-				takenID = true;
-			}
-		});
-
-		if (takenID) return;
-
-		if (stockImageURI === null) {
-			this.setState({ error: 'Image Missing', uploading: false });
-			return;
-		}
 
 		try {
-			const imageBase = await URLtoBASE64Raw(stockImageURI?.item(0) as File)
-			
-			await this.props.addStockistProp({
-				ID: stockID,
-				image64: imageBase,
-				title: stockTitle
-			}, this.props.user);
+			const data = await this.onReadCSV(this.state.stockImageURI[0]);
+			const jsonData = await csv().fromString(data);
 
-			console.log("Finshed Adding")
+			let modifiedData = [];
 
-		} catch (err){
-			console.log(err);
+			jsonData.map((jData) => {
+				// EXTRACT STATE
+
+				modifiedData.push({
+					ID: uuidv4(),
+					name: jData.Name,
+					website: jData.Website,
+					address: jData.Address,
+					state: jData.State
+				} as StockistInfo)
+			})
+
+			await this.props.addStockistProp(modifiedData, this.props.user);
+			console.log(modifiedData);
+		} catch{
+			console.log('Failed');
 		}
-
-		this.setState({uploading: false});
 	}
 
 	onDeleteStockist = async (name: StockistInfo) => {
@@ -121,12 +122,12 @@ class AdminStockists extends React.Component<IProps, IState> {
 			<div className="admin-column">
 				<div className="admin-column-input">
 					<h1>STOCKIST EDITOR</h1>
-					<h3>ID</h3>
-					<input value={this.state.stockID} onChange={res => this.setState({stockID: res.target.value})}></input>
-					<h3>Title</h3>
-					<input value={this.state.stockTitle} onChange={res => this.setState({stockTitle: res.target.value})}></input>
-					<h3>Image URI</h3>
-					<input type="file" accept="image/png" onChange={res => this.setState({ stockImageURI: res.target.files as FileList | null })}></input>
+					{/* <h3>ID</h3> */}
+					{/* <input value={this.state.stockID} onChange={res => this.setState({stockID: res.target.value})}></input> */}
+					{/* <h3>Title</h3> */}
+					{/* <input value={this.state.stockTitle} onChange={res => this.setState({stockTitle: res.target.value})}></input> */}
+					<h3>CSV</h3>
+					<input type="file" accept=".csv" onChange={res => this.setState({ stockImageURI: res.target.files as FileList | null })}></input>
 					<button onClick={() => this.onAddStockist()}>{this.state.uploading ? 'UPLOADING IN PROGESS' : "Upload"}</button>
 					<span>{this.state.error}</span>
 				</div>
@@ -137,8 +138,8 @@ class AdminStockists extends React.Component<IProps, IState> {
 					{this.props.stockists && this.props.stockists.map(val => {
 						return (
 							<div key={val.ID} className='admin-data-card'>
-								<span>{val.title}</span>
-								<button onClick={() => this.onDeleteStockist(val)}>{this.state.deleting ? "DELETING" : "Delete"}</button>
+								<span>{val.name}</span>
+								{/* <button onClick={() => this.onDeleteStockist(val)}>{this.state.deleting ? "DELETING" : "Delete"}</button> */}
 							</div>
 						)
 					})}
@@ -149,7 +150,7 @@ class AdminStockists extends React.Component<IProps, IState> {
 }
 
 const mapDispatch = {
-	addStockistProp: (p: StockistInfo, user: User) => addStockistAction(p, user),
+	addStockistProp: (p: StockistInfo[], user: User) => addStockistAction(p, user),
 	deleteStockistProp: (p: StockistInfo, user: User) => deleteStockistAction(p, user),
 	getStockists: () => getStockistAction(),
 }

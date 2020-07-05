@@ -41,8 +41,10 @@ class Stockists extends React.Component<IProps, {}> {
 							return (
 								<div className="stockists-card-padding-container" key={val.ID}>
 									<div className="stockists-card">
-										<p>{val.title}</p>
-										<img src={val.imageURI}></img>
+										<p>{val.name}</p>
+										<p>{val.website}</p>
+										<p>{val.address}</p>
+										{/* <img src={val.imageURI}></img> */}
 									</div>
 								</div>
 							)

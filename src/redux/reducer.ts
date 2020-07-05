@@ -8,7 +8,7 @@ export const reducer = (state: AppState = DefaultState, action: IAction) => {
 		case ActionTypes.StockAdd:
 			return {
 				...state,
-				stockists: [...state.stockists, action.payload],
+				stockists: action.payload,
 			}
 		case ActionTypes.StockGet:
 			return {

@@ -59,7 +59,7 @@ class Admin extends React.Component<{}, IState> {
 			if (user) {
 				try {
 					const token = await user.getIdToken();
-					
+					console.log(token);
 					this.setState({
 						loggedIn: true,
 						user: {

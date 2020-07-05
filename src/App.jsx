@@ -21,7 +21,7 @@ const AppAnimate = () => {
 	const transitions = useTransition(location, location => location.pathname, {
 	  from: { opacity: 0 },
 	  enter: { opacity: 1 },
-	  leave: { opacity: 1 },
+	  leave: { opacity: 0 },
 	})
 
 	return transitions.map(({ item: location, props, key }) => (
