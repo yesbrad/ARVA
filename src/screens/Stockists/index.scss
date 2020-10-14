@@ -2,12 +2,45 @@
 
 .stockists-info-container {
 	@include FlexCenter;
+	flex-direction: column;
+
+	.stockists-state-container {
+		width: 80%;
+		@include FlexCenter;
+		height: 5rem;
+		padding: 0.6rem 0.3rem;
+		box-sizing: border-box;
+
+		@media screen and (max-width: $mobileSize) {
+			width: 100%;
+		}
+
+		button {
+			height: 100%;
+			width: 100%;
+			background: transparent;
+			border: none;
+			font-size: 1.2em;
+		}
+		
+		button:focus {
+			outline: none;
+		}
+		
+		#stockist-button-selected {
+			color: white;
+			background: darkgray;
+		}
+	}
 
 	.stockists-grid-container {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		width: 80%;
 		margin: 0.3rem 0;
+		position: relative;
+		box-sizing: border-box;
+		// @include DBorder;
 
 		@media screen and (max-width: $mobileSize) {
 			grid-template-columns: repeat(1, 1fr);
@@ -17,14 +50,17 @@
 		.stockists-card-padding-container{
 			padding: 0.3rem;
 			box-sizing: border-box;
+			width: 100%;
 
 			.stockists-card {
 				@include FlexCenter;
 				flex-direction: column;
+				align-items: flex-start;
 				max-width: 100%;
-				height: 35rem;
 				background-color: lightgray;
-				
+				padding: 2em;
+				box-sizing: border-box;
+
 				img {
 					border-radius: 1.5rem;
 					width: 25rem;
@@ -41,16 +77,10 @@
 				
 				p {
 					font-weight: 700;
-					width: 25rem;
 					color: black;
-					font-size: 2rem;
+					font-size: 1.2rem;
 					overflow-wrap: anywhere;
 					text-overflow: clip;
-
-					@media screen and (max-width: $mobileSize) {
-						width: 15rem;
-						height: 15rem;
-					}
 				}
 			}		
 		}

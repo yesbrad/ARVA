@@ -14,11 +14,7 @@ export const addStockistAction = (info: StockistInfo, user: User) => {
 					"Accept": "application/json",
 					"Authorization": `Bearer ${user.token}`,
 				},
-				body: JSON.stringify({
-					ID: info.ID,
-					image64: info.imageURI,
-					title: info.title
-				}),
+				body: JSON.stringify(info),
 			});
 		} catch (err) {
 			console.log(err);
@@ -26,11 +22,7 @@ export const addStockistAction = (info: StockistInfo, user: User) => {
 
 		dispatch<AddStockistAction>({
 			type: ActionTypes.StockAdd,
-			payload: {
-				ID: info.ID,
-				title: info.title,
-				imageURI: info.imageURI,
-			}
+			payload: info
 		});
 	})
 
@@ -55,14 +47,33 @@ export const deleteStockistAction = (info: StockistInfo, user: User) => {
 
 		dispatch<DeleteStockistAction>({
 			type: ActionTypes.StockDelete,
-			payload: {
-				ID: info.ID,
-				title: info.title,
-				imageURI: info.imageURI,
-			}
+			payload: info
 		});
 	})
 
+};
+
+
+export const getStockistActionTwo = async (dispatch: Dispatch) => {
+	try {
+		const val = await fetch(`${apiURL}/getStockistsAll`, {
+			method: "GET",
+			headers: {
+				"Accept": "application/json",
+			},
+		});
+
+		const jsn = await val.json();
+
+		console.log(jsn.stockists.stockists);
+
+		dispatch<GetStockistAction>({
+			type: ActionTypes.StockGet,
+			payload: jsn.stockists.stockists
+		});
+	} catch (err) {
+		console.log(err);
+	}
 };
 
 

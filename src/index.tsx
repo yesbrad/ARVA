@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/baseStyles.css';
+import './styles/baseStyles.scss';
 import App from './App.jsx';
 import * as serviceWorker from './serviceWorker';
 require('dotenv').config()

@@ -9,14 +9,14 @@ import "firebase/auth";
 import { Link, Switch, Route } from 'react-router-dom';
 
 var firebaseConfig = {
-    apiKey: process.env.REACT_APP_AUKEY,
+	apiKey: "AIzaSyDmcAFTc5lVXJ5kbzeSkSa_XxJ-H29rSO4",
     authDomain: "arva-3193d.firebaseapp.com",
     databaseURL: "https://arva-3193d.firebaseio.com",
     projectId: "arva-3193d",
     storageBucket: "arva-3193d.appspot.com",
-    messagingSenderId: process.env.REACT_APP_SENDERID,
-    appId: process.env.REACT_APP_APPID,
-    measurementId: process.env.REACT_APP_MEASUREID
+	messagingSenderId: "606410759311",
+	appId: "1:606410759311:web:f5fe35c4a40fe2e4a6e4fa",
+	measurementId: "G-FMCR7LV2XH"
 };
 
 
