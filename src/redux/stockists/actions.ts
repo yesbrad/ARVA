@@ -58,6 +58,29 @@ export const deleteStockistAction = (info: StockistInfo, user: User) => {
 };
 
 
+export const getStockistActionTwo = async (dispatch: Dispatch) => {
+	try {
+		const val = await fetch(`${apiURL}/getStockistsAll`, {
+			method: "GET",
+			headers: {
+				"Accept": "application/json",
+			},
+		});
+
+		const jsn = await val.json();
+
+		console.log(jsn.stockists.stockists);
+
+		dispatch<GetStockistAction>({
+			type: ActionTypes.StockGet,
+			payload: jsn.stockists.stockists
+		});
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+
 export const getStockistAction = () => {
 	return (async (dispatch: Dispatch) => {
 		try {
