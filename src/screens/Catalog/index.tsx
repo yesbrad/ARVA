@@ -4,31 +4,50 @@ import Header from '../../components/header';
 import Footer from '../../components/footer';
 import Banner from '../../components/banner';
 import BannerImage from '../../images/BannerImages/Banner5.jpg';
+import { FaEye } from 'react-icons/fa';
 
 interface SectionData {
 	title: string,
 	URL: string
 }
 
+const mainURL = "https://documentcloud.adobe.com/link/review?uri=urn:aaid:scds:US:dad4620b-9039-4ace-a74b-7553e98ff374#pageNum=8";
+
 const sectionData = [
 	{
-		title: 'Section 1',
+		title: 'Chapter 1',
 		URL: 'www.google.com'
 	},
 	{
-		title: 'Section 2',
+		title: 'Chapter 2',
 		URL: 'google.com'
 	},
 	{
-		title: 'Section 3',
+		title: 'Chapter 3',
 		URL: 'google.com'
 	},
 	{
-		title: 'Section 4',
+		title: 'Chapter 4',
 		URL: 'google.com'
 	},
 	{
-		title: 'Section 5',
+		title: 'Chapter 5',
+		URL: 'google.com'
+	},
+	{
+		title: 'Chapter 6',
+		URL: 'google.com'
+	},
+	{
+		title: 'Chapter 7',
+		URL: 'google.com'
+	},
+	{
+		title: 'Chapter 8',
+		URL: 'google.com'
+	},
+	{
+		title: 'Chapter 9',
 		URL: 'google.com'
 	},
 ] as SectionData[];
@@ -39,13 +58,27 @@ const Catalog = () => {
 			<Header />
 			<div className="catalog-header">
 				<div className="catalog-header-logo"></div>
-				<span>CATALOG</span>
+			</div>
+			
+			<div className="catalog-main-download-container">
+				<h2 className="catalog-all">
+				VIEW OR DOWNLOAD ENTIRE CATALOG
+				</h2>
+				<button className="catalog-main-download" onClick={() => window.open(mainURL)}>
+					2020 CATALOG DOWNLOAD 
+					<FaEye className="catalog-dicon" />
+				</button>
+			
+				<h2 className="catalog-all">
+						OR VIEW INDIVIDUAL CHAPTERS
+				</h2>
 			</div>
 			<div className="catalog-section-container">
 				{sectionData.map(data => (
 					<div className="catalog-section">
 						<span>{data.title}</span>
-						<button onClick={() => window.open(data.URL)}>View Section</button>
+						<h5>Click the button below to View</h5>
+						<button onClick={() => window.open(data.URL)}><FaEye className="catalog-dicon" /></button>
 					</div>
 				))}
 			</div>
