@@ -14,7 +14,7 @@ class Footer extends React.Component {
 				<Link id="footer-link" to="/contact">CONTACT</Link>
 				</nav>
 				<p>
-					&copy; 2020 Australian RV Accesories
+					&copy; 2021 Australian RV Accesories
 				</p>
 			</div>
 		)

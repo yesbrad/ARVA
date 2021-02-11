@@ -9,7 +9,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   width: 100%;
-  height: 25rem;
+  height: 20rem;
   background-color: white;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -34,9 +34,8 @@
 
 .catalog-section-container {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -ms-grid;
+  display: grid;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -44,46 +43,74 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-bottom: 10rem;
-}
-
-.catalog-section-container .catalog-section {
-  width: 60%;
-  height: 5rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: lightgrey;
-  margin-bottom: 1rem;
-  padding: 2rem;
+  margin-bottom: 5rem;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  border-radius: 1rem;
 }
 
 @media screen and (max-width: 1000px) {
-  .catalog-section-container .catalog-section {
-    width: 90%;
+  .catalog-section-container {
+    padding: 0 2rem;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
   }
+}
+
+.catalog-section-container .catalog-section {
+  height: 15rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1rem;
+  padding: 2rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
 }
 
 .catalog-section-container .catalog-section button {
   background-color: #f8a100;
   border: none;
-  height: 3em;
-  width: 9em;
+  height: 4em;
+  width: 15em;
   border-radius: 1.5em;
   color: white;
+  -webkit-transition: -webkit-transform 100ms ease-out;
+  transition: -webkit-transform 100ms ease-out;
+  transition: transform 100ms ease-out;
+  transition: transform 100ms ease-out, -webkit-transform 100ms ease-out;
+}
+
+.catalog-section-container .catalog-section button .catalog-dicon {
+  color: white;
+  width: 2rem;
+  height: 2rem;
+}
+
+.catalog-section-container .catalog-section button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.catalog-section-container .catalog-section h5 {
+  color: lightgray;
 }
 
 .catalog-section-container .catalog-section span {
-  color: gray;
+  color: #1f1f1f;
   font-weight: 700;
   font-size: 2em;
 }
@@ -92,5 +119,69 @@
   .catalog-section-container .catalog-section span {
     font-size: 1.5em;
   }
+}
+
+.catalog-main-download-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 5rem;
+}
+
+.catalog-main-download-container .catalog-all {
+  text-align: center;
+}
+
+.catalog-main-download-container .catalog-main-download {
+  width: 50rem;
+  height: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #f8a100;
+  border: none;
+  border-radius: 1.5em;
+  color: white;
+  font-weight: 900;
+  font-size: 2rem;
+  -webkit-transition: -webkit-transform 100ms ease-out;
+  transition: -webkit-transform 100ms ease-out;
+  transition: transform 100ms ease-out;
+  transition: transform 100ms ease-out, -webkit-transform 100ms ease-out;
+}
+
+@media screen and (max-width: 1000px) {
+  .catalog-main-download-container .catalog-main-download {
+    font-size: 1.5rem;
+    width: 90%;
+  }
+}
+
+.catalog-main-download-container .catalog-main-download .catalog-dicon {
+  color: white;
+  width: 4rem;
+  height: 4rem;
+}
+
+.catalog-main-download-container .catalog-main-download:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 /*# sourceMappingURL=index.css.map */
