@@ -5,9 +5,9 @@
 
 	.brand-grid-container {
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: repeat(3, 1fr);
 		// @include DBorder;
-		width: 80%;
+		width: 70%;
 		margin: 0.3rem 0;
 
 		@media screen and (max-width: $mobileSize) {
@@ -18,21 +18,27 @@
 		.brand-card {
 			// width: 100%;
 			// @include DBorder;
-			padding: 0.3rem;
+			padding: 1rem;
 			box-sizing: border-box;
 
 
 			.brand-card-container {
 				width: 100%;
-				height: 30rem;
-				background-color: lightgray;
+				height: 15rem;
+				//background-color: lightgray;
 				@include FlexCenter;
 				flex-direction: column;
+				border-left: 1px solid lightgray;
+				border-right: 1px solid lightgray;
+		
+				@media screen and (max-width: $mobileSize) {
+					height: 10rem;
+				}
 
 				.brand-card-image {
 					border-radius: 1.5rem;
-					width: 80%;
-					height: 80%;
+					width: 50%;
+					height: 50%;
 					background-repeat: no-repeat;
 					background-size: contain;
 					background-position: center;
