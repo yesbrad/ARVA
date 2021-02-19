@@ -15,7 +15,6 @@ import BannerImage from '../../images/NewImages/tinified/4.jpg';
 import { OpenCatalog } from '../../util';
 import BrandStrip from '../../components/brandStrip';
 
-
 interface IProps {
 	getBrochuresAction: any,
 	getNewProductsAction: any,
@@ -32,6 +31,7 @@ class Home extends React.Component<IProps, {}> {
 		this.props.getBrandAction();
 	}
 
+
 	render(){
 		return(
 			<div className='main-container'>
@@ -39,9 +39,8 @@ class Home extends React.Component<IProps, {}> {
 				<Banner
 					backgroundImage={BannerImage}
 					title="Welcome To Australian RV"
-					description="Checkout our 2021 catalog below!"
-					buttonCallback={OpenCatalog}
-					buttonText="Open Catalog"
+					description="Checkout our 2021 Catalogue below!"
+					cat={true}
 				/>
 				<BrandStrip />
 				<div className='home-container'>
