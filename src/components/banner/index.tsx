@@ -20,7 +20,7 @@ class Banner extends React.Component<IProps, {}> {
 				{this.props.title && <h1>{this.props.title}</h1>}
 				{this.props.description && <h2>{this.props.description}</h2>}
 				{this.props.buttonText && <button onClick={this.props.buttonCallback}>{this.props.buttonText}</button>}
-				{this.props.cat && <Link className="cat" to="/catalog">VIEW</Link>}
+				{this.props.cat && <Link className="cat" to="/catalogue">VIEW</Link>}
 			</div>
 		)
 	}

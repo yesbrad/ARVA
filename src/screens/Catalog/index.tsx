@@ -1,9 +1,7 @@
 import React from 'react';
-import './index.css';
+import './index.scss';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
-import Banner from '../../components/banner';
-import BannerImage from '../../images/BannerImages/Banner5.jpg';
 import { FaEye } from 'react-icons/fa';
 
 interface SectionData {
@@ -62,10 +60,10 @@ const Catalog = () => {
 			
 			<div className="catalog-main-download-container">
 				<h2 className="catalog-all">
-				VIEW OR DOWNLOAD ENTIRE CATALOG
+				VIEW OR DOWNLOAD ENTIRE CATALOGUE
 				</h2>
 				<button className="catalog-main-download" onClick={() => window.open(mainURL)}>
-					2020 CATALOG DOWNLOAD 
+					2020 CATALOGUE DOWNLOAD 
 					<FaEye className="catalog-dicon" />
 				</button>
 			

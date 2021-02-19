@@ -32,7 +32,7 @@ const AppAnimate = () => {
 				<Route path="/stockists"  component={Stockists} />
 				<Route path="/contact" component={Contact}/>
 				<Route path="/brochures" component={Brochures} />
-				<Route path="/catalog" component={Catalog}/>
+				<Route path="/catalogue" component={Catalog}/>
 				<Route path="/admin" component={Admin}/>
 			</Switch>
 		</animated.div>

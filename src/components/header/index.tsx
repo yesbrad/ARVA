@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './index.css';
+import './index.scss';
 import { Link } from 'react-router-dom';
 import { IoMdMenu, IoIosClose } from 'react-icons/io';
-import { OpenCatalog } from '../../util';
 import { useSpring, animated} from 'react-spring';
 
 const Header = () => {
@@ -28,7 +27,7 @@ const Header = () => {
 					<div id='circleDivider' />
 					<div id='content-wrapper'>	
 						{/* <button id='login-button'>Login</button> */}
-						<Link id='contact-button' to="/catalog">View Catalog</Link>
+						<Link id='contact-button' to="/catalogue">View Catalogue</Link>
 					</div>
 				</div>
 				<button onClick={() => OpenMenu(true)} className="nav-hamburger-container">
