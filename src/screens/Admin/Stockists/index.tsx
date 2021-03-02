@@ -14,7 +14,7 @@ interface IState {
 	stockTitle: string,
 	stockWebsite: string,
 	stockState: string,
-
+	stockAddress: string,
 	deleting: boolean,
 	uploading: boolean,
 	error: string
@@ -36,6 +36,7 @@ class AdminStockists extends React.Component<IProps, IState> {
 			stockID: 'Name',
 			stockTitle: 'Enter title',
 			stockWebsite: 'https//:austrv.com.au/stockists',
+			stockAddress: '45 Flinders St, Melbourne, Victoria 3000',
 			stockState: 'VIC',
 			deleting: false,
 			uploading: false,
@@ -47,6 +48,8 @@ class AdminStockists extends React.Component<IProps, IState> {
 		this.pullStockist();
 	}
 
+	GetStockID = () => this.state.stockTitle.concat(this.state.stockState)
+
 	onAddStockist = async () => {
 		console.log('Adding Stockist');
 		
@@ -54,12 +57,12 @@ class AdminStockists extends React.Component<IProps, IState> {
 
 		this.setState({uploading: true, error: ''});
 
-		const { stockID, stockTitle, stockWebsite, stockState} = this.state;
+		const {stockTitle, stockWebsite, stockState, stockAddress} = this.state;
 
 		let takenID: boolean = false;
 
 		this.props.stockists.map((prod) => {
-			if (prod.ID === stockID) {
+			if (prod.ID === this.GetStockID()) {
 				this.setState({ error: 'ID Already Taken', uploading: false });
 				takenID = true;
 			}
@@ -69,9 +72,10 @@ class AdminStockists extends React.Component<IProps, IState> {
 
 		try {			
 			await this.props.addStockistProp({
-				ID: stockID,
+				ID: this.GetStockID(),
 				name: stockTitle,
 				website: stockWebsite,
+				address: stockAddress,
 				state: stockState
 			}, this.props.user);
 
@@ -118,12 +122,12 @@ class AdminStockists extends React.Component<IProps, IState> {
 			<div className="admin-column">
 				<div className="admin-column-input">
 					<h1>STOCKIST EDITOR</h1>
-					<h3>ID</h3>
-					<input value={this.state.stockID} onChange={res => this.setState({stockID: res.target.value})}></input>
 					<h3>Title</h3>
 					<input value={this.state.stockTitle} onChange={res => this.setState({stockTitle: res.target.value})}></input>
 					<h3>WEBSITE</h3>
 					<input value={this.state.stockWebsite} onChange={res => this.setState({stockWebsite: res.target.value})}></input>
+					<h3>ADDRESS</h3>
+					<input value={this.state.stockAddress} onChange={res => this.setState({stockAddress: res.target.value})}></input>
 					<h3>STATE CODE (eg VIC, NSW)</h3>
 					<input value={this.state.stockState} onChange={res => this.setState({stockState: res.target.value})}></input>
 					<button onClick={() => this.onAddStockist()}>{this.state.uploading ? 'UPLOADING IN PROGESS' : "Upload"}</button>
@@ -136,7 +140,7 @@ class AdminStockists extends React.Component<IProps, IState> {
 					{this.props.stockists && this.props.stockists.map(val => {
 						return (
 							<div key={val.ID} className='admin-data-card'>
-								<span>{val.name}</span>
+								<span>Name: {val.name} | State: {val.state}</span>
 								<button onClick={() => this.onDeleteStockist(val)}>{this.state.deleting ? "DELETING" : "Delete"}</button>
 							</div>
 						)

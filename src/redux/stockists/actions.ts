@@ -16,6 +16,9 @@ export const addStockistAction = (info: StockistInfo, user: User) => {
 				},
 				body: JSON.stringify(info),
 			});
+
+			console.log("Just Pushed this Stockist", info);
+
 		} catch (err) {
 			console.log(err);
 		}
@@ -65,11 +68,11 @@ export const getStockistActionTwo = async (dispatch: Dispatch) => {
 
 		const jsn = await val.json();
 
-		console.log(jsn.stockists.stockists);
+		console.log('Stockists', jsn);
 
 		dispatch<GetStockistAction>({
 			type: ActionTypes.StockGet,
-			payload: jsn.stockists.stockists
+			payload: jsn.stockists
 		});
 	} catch (err) {
 		console.log(err);
@@ -80,7 +83,9 @@ export const getStockistActionTwo = async (dispatch: Dispatch) => {
 export const getStockistAction = () => {
 	return (async (dispatch: Dispatch) => {
 		try {
-			const val = await fetch('https://us-central1-arva-3193d.cloudfunctions.net/getStockists', {
+			console.log('About to get Stockists');
+
+			const val = await fetch(`${apiURL}/getStockistsAll`, {
 				method: "GET",
 				headers: {
 					"Accept": "application/json",
@@ -88,6 +93,7 @@ export const getStockistAction = () => {
 			});
 
 			const jsn = await val.json();
+			console.log('Stockists', jsn);
 
 			dispatch<GetStockistAction>({
 				type: ActionTypes.StockGet,
