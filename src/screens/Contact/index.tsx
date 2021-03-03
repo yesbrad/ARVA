@@ -5,9 +5,14 @@ import Footer from '../../components/footer';
 import Banner from '../../components/banner';
 import BannerImage from '../../images/BannerImages/Banner6.jpg';
 import { apiURL } from '../../api';
+const sgMail = require('@sendgrid/mail')
 
 interface IState {
 	sent: string,
+	message: string,
+	subject: string,
+	email: string,
+	name: string,
 }
 
 class Contact extends React.Component<{}, IState> {
@@ -15,6 +20,10 @@ class Contact extends React.Component<{}, IState> {
 		super(props);
 		this.state = {
 			sent: '',
+			message: '',
+			subject: '',
+			email: '',
+			name:'',
 		}
 	}
 
@@ -23,14 +32,30 @@ class Contact extends React.Component<{}, IState> {
 
 		this.setState({ sent: 'Sending' });
 
+		const { message, email, name, subject } = this.state;
+
+		if (message === '' || email === '' || name === '' || subject === '') {
+			this.setState({ sent: '*Missing Fields' });
+			return;
+		}
+
 		try {	
-			await fetch(`${apiURL}/sendMail`);
+			await fetch(`${apiURL}/sendMail`, {
+				method: 'POST',
+				body: JSON.stringify({
+					message,
+					email,
+					subject,
+					name,
+				}),
+			});
 			this.setState({ sent: 'Sent' });
 			console.log('Sent');
 		} catch (err) {
-			this.setState({ sent: 'Sending Failed' });
-			console.log('Message Failed')
+			this.setState({ sent: 'Sending Failed, Please Try Again' });
+			console.log('Message Failed', err)
 		}
+		
 	}
 
 	render(){
@@ -73,15 +98,15 @@ class Contact extends React.Component<{}, IState> {
 						</div>
 						<div id="contact-form">
 							<p>Name</p>
-							<textarea id="name-box"></textarea>
+							<textarea value={this.state.name} onChange={(event) => this.setState({ name: event.target.value})} id="name-box"></textarea>
 							<p>Email</p>
-							<textarea id="name-box"></textarea>
+							<textarea value={this.state.email} onChange={(event) => this.setState({ email: event.target.value})}  id="name-box"></textarea>
 							<p>Subject Line</p>
-							<textarea id="name-box"></textarea>
+							<textarea value={this.state.subject} onChange={(event) => this.setState({ subject: event.target.value})}  id="name-box"></textarea>
 							<p>Message</p>
-							<textarea id="large-box"></textarea>
+							<textarea value={this.state.message} onChange={(event) => this.setState({ message: event.target.value})}  id="large-box"></textarea>
 							<button onClick={this.onSendEmail}>Submit</button>
-							{this.state.sent && <span style={{color: 'green'}}>Sent</span>}
+							{this.state.sent && <span style={{ color: this.state.sent === 'Sent' ? 'green' : 'red' }}>{this.state.sent}</span>}
 						</div>
 					</div>
 				</div>
