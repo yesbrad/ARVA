@@ -6,7 +6,7 @@ import Brands from './screens/Brands';
 import Contact from './screens/Contact';
 import Admin from './screens/Admin';
 import reduxStore from './redux/index';
-import { useTransition, animated } from 'react-spring'
+import { useTransition, animated, config } from 'react-spring'
 import {
 	BrowserRouter as Router,
 	Switch,
@@ -19,23 +19,22 @@ import Catalog from './screens/Catalog';
 const AppAnimate = () => {
 	const location = useLocation();
 	const transitions = useTransition(location, location => location.pathname, {
-	  from: { opacity: 0 },
-	  enter: { opacity: 1 },
-	  leave: { opacity: 1 },
+	  from: { opacity: 0, transform: 'scale(0)'},
+	  enter: { opacity: 1, transform: 'scale(1)'},
+		leave: { opacity: 0, transform: 'scale(0)'},
+		config: config.molasses,
 	})
 
 	return transitions.map(({ item: location, props, key }) => (
-		<animated.div key={key} style={props}>
 			<Switch location={location}>
-				<Route exact path="/" component={Home} />
-				<Route path="/brands" component={Brands}/>
-				<Route path="/stockists"  component={Stockists} />
-				<Route path="/contact" component={Contact}/>
-				<Route path="/brochures" component={Brochures} />
-				<Route path="/catalogue" component={Catalog}/>
-				<Route path="/admin" component={Admin}/>
+					<Route exact path="/" component={Home} />
+					<Route path="/brands" component={Brands}/>
+					<Route path="/stockists"  component={Stockists} />
+					<Route path="/contact" component={Contact}/>
+					<Route path="/brochures" component={Brochures} />
+					<Route path="/catalogue" component={Catalog}/>
+					<Route path="/admin" component={Admin}/>
 			</Switch>
-		</animated.div>
 	));
 }
 
