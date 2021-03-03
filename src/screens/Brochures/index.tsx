@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.css';
+import './index.scss';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
 import { BrandInfo } from '../../redux/brands/types';
@@ -42,7 +42,7 @@ class Brochures extends React.Component<IProps, {}> {
 										<div className="brochure-card-details">
 											<h2>{val.brochureTitle}</h2>
 											<span>{val.brochureDescription}</span>
-											<button onClick={() => window.open(val.brochurePDFURL)}>Open Brochure</button>
+											<button onClick={() => window.open(val.brochurePDFURL)}>OPEN</button>
 										</div>
 									</div>
 								</div>

@@ -79,14 +79,20 @@
 			}
 		}
 		
+		h2 {
+			color: rgb(121, 121, 121);
+		}
+
 		h5 {
 			color: lightgray;
 		}
-
+		
 		span {
 			color: rgb(31, 31, 31);
 			font-weight: 700;
-			font-size: 2em;
+			font-size: 2.5em;
+			text-align: center;
+			box-sizing: border-box;
 
 			@media screen and (max-width: $mobileSize) {
 				font-size: 1.5em;

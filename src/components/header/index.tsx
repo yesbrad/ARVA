@@ -23,6 +23,7 @@ const Header = () => {
 				<div className="arva-logo">
 					<img className="arva-logo" src={require('../../images/Logo.png')}></img>
 				</div>
+				<img className="arva-slogen" src={require('../../images/Asset 2.png')}></img>
 				<div className="right-container">
 					<div id='circleDivider' />
 					<div id='content-wrapper'>	

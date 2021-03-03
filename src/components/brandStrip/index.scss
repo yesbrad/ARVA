@@ -1,9 +1,9 @@
 @import '../../styles/config.scss';
 
 .brandstrip-container {
-	background: gray;
+	background: $navBlack;
 	@include FlexCenter;
-	height: 5rem;
+	height: 6rem;
 
 	img {
 

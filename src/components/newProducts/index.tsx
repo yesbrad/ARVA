@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useRef} from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import './index.css';
+import './index.scss';
 import { NewProductInfo } from '../../redux/newProducts/types';
 import Loader from 'react-loader-spinner'
 import { useSprings, animated } from 'react-spring';
