@@ -31,6 +31,18 @@ const Stockists = () => {
 		getStockistActionTwo(dispatch);
 	}, [])
 
+	const getHttpString = (url: string) => {
+		if (url.includes("http://")) {
+			return url;
+		}
+
+		if (url.includes("https://")) {
+			return url;
+		}
+
+		return `http://${url}`
+	}
+
 	return(
 		<div className='stockists-main-container'>
 			<Header />
@@ -55,9 +67,9 @@ const Stockists = () => {
 						<animated.div style={props} className="stockists-card-padding-container" key={key}>
 							<div className="stockists-card">
 								<h4>{item.name}</h4>
-								<p onClick={() => window.open(item.website)}>{item.website}</p>
+								<p onClick={() => window.open(getHttpString(item.website))}>{item.website}</p>
 								<p id="stockist-address">{item.address}</p>
-								{item.website && <button onClick={() => window.open(item.website)}><FaEye className="catalog-dicon" /></button>}
+								{item.website && <button onClick={() => window.open(getHttpString(item.website), '_blank').focus()}><FaEye className="catalog-dicon" /></button>}
 							</div>
 						</animated.div>
 					))}
