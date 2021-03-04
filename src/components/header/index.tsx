@@ -40,6 +40,7 @@ const Header = () => {
 				<Link id="nav-link" to="/stockists">STOCKISTS</Link>
 				<Link id="nav-link" to="/brands">BRANDS</Link>
 				<Link id="nav-link" to="/brochures">BROCHURES</Link>
+				<Link id="nav-link" to="/warranties">WARRANTIES</Link>
 				<Link id="nav-link" to="/contact">CONTACT</Link>
 			</nav>
 			<animated.div style={springProps} className="nav-container-hamburger">
@@ -49,6 +50,7 @@ const Header = () => {
 				<Link id="nav-link" to="/stockists">STOCKISTS</Link>
 				<Link id="nav-link" to="/brands">BRANDS</Link>
 				<Link id="nav-link" to="/brochures">BROCHURES</Link>
+				<Link id="nav-link" to="/warranties">WARRANTIES</Link>
 				<Link id="nav-link" to="/contact">CONTACT</Link>
 			</animated.div>
 		</div>

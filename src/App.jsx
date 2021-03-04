@@ -4,6 +4,7 @@ import Home from './screens/Home';
 import Stockists from './screens/Stockists';
 import Brands from './screens/Brands';
 import Contact from './screens/Contact';
+import Warranties from './screens/Warranties';
 import Admin from './screens/Admin';
 import reduxStore from './redux/index';
 import { useTransition, animated, config } from 'react-spring'
@@ -26,15 +27,16 @@ const AppAnimate = () => {
 	})
 
 	return transitions.map(({ item: location, props, key }) => (
-			<Switch location={location}>
-					<Route exact path="/" component={Home} />
-					<Route path="/brands" component={Brands}/>
-					<Route path="/stockists"  component={Stockists} />
-					<Route path="/contact" component={Contact}/>
-					<Route path="/brochures" component={Brochures} />
-					<Route path="/catalogue" component={Catalog}/>
-					<Route path="/admin" component={Admin}/>
-			</Switch>
+		<Switch location={location}>
+			<Route exact path="/" component={Home} />
+			<Route path="/brands" component={Brands}/>
+			<Route path="/stockists"  component={Stockists} />
+			<Route path="/contact" component={Contact} />
+			<Route path="/warranties" component={Warranties}/>
+			<Route path="/brochures" component={Brochures} />
+			<Route path="/catalogue" component={Catalog}/>
+			<Route path="/admin" component={Admin}/>
+		</Switch>
 	));
 }
 
