@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.css';
+import './index.scss';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
 import { BrandInfo } from '../../redux/brands/types';
@@ -7,7 +7,7 @@ import { AppState } from '../../redux/state';
 import { getBrandAction } from '../../redux/brands/actions';
 import { connect } from 'react-redux';
 import Banner from '../../components/banner';
-import BannerImage from '../../images/BannerImages/Banner4.jpg';
+import BannerImage from '../../images/BannerImages/Banner11.jpg';
 import LoadingSpinner from '../../components/loadingSpinner';
 
 interface IProps {

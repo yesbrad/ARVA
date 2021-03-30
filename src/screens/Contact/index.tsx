@@ -3,7 +3,7 @@ import './index.scss';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
 import Banner from '../../components/banner';
-import BannerImage from '../../images/BannerImages/Banner6.jpg';
+import BannerImage from '../../images/BannerImages/Banner12.jpg';
 import { apiURL } from '../../api';
 const sgMail = require('@sendgrid/mail')
 

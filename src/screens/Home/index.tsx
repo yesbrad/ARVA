@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.css';
+import './index.scss';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
 import NewProducts from '../../components/newProducts';
@@ -11,7 +11,7 @@ import { getStockistAction } from '../../redux/stockists/actions';
 import { getBrandAction } from '../../redux/brands/actions';
 import { NewProductInfo } from '../../redux/newProducts/types';
 import Banner from '../../components/banner';
-import BannerImage from '../../images/NewImages/tinified/4.jpg';
+import BannerImage from '../../images/BannerImages/Banner9.jpg';
 import { OpenCatalog } from '../../util';
 import BrandStrip from '../../components/brandStrip';
 

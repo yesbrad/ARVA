@@ -7,8 +7,9 @@ import { connect } from 'react-redux';
 import { getBrochuresAction } from '../../redux/Brochures/actions';
 import { BrochureInfo } from '../../redux/Brochures/types';
 import Banner from '../../components/banner';
-import BannerImage from '../../images/BannerImages/Banner5.jpg';
+import BannerImage from '../../images/BannerImages/Banner8.jpg';
 import LoadingSpinner from '../../components/loadingSpinner';
+import { FaEye } from 'react-icons/fa';
 
 interface IProps {
 	brochures?: BrochureInfo[],
@@ -40,7 +41,7 @@ class Brochures extends React.Component<IProps, {}> {
 										<div className="brochure-card-details">
 											<h2>{val.brochureTitle}</h2>
 											<span>{val.brochureDescription}</span>
-											<button onClick={() => window.open(val.brochurePDFURL)}>OPEN</button>
+											<button onClick={() => window.open(val.brochurePDFURL)}><FaEye className="brochure-icon" /></button>
 										</div>
 									</div>
 								</div>

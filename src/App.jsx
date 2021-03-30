@@ -43,7 +43,16 @@ const AppAnimate = () => {
 const App = () => (
 	<Provider store={reduxStore}>		
 		<Router>
-			<AppAnimate />
+			<Switch>
+				<Route exact path="/" component={Home} />
+				<Route path="/brands" component={Brands}/>
+				<Route path="/stockists"  component={Stockists} />
+				<Route path="/contact" component={Contact} />
+				<Route path="/warranties" component={Warranties}/>
+				<Route path="/brochures" component={Brochures} />
+				<Route path="/catalogue" component={Catalog}/>
+				<Route path="/admin" component={Admin}/>
+			</Switch>
 		</Router>
 	</Provider>
 )
