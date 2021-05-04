@@ -4,11 +4,12 @@ import { apiURL } from '../../api';
 import { AppState } from '../state';
 import { User } from '../../screens/Admin';
 import { ActionTypes } from '../actionTypes';
+import { exception } from 'console';
 
 export const addStockistAction = (info: StockistInfo, user: User) => {
 	return (async (dispatch: Dispatch) => {
 		try {
-			await fetch(apiURL + '/addStockist', {
+			const res = await fetch(apiURL + '/addStockist', {
 				method: "POST",
 				headers: {
 					"Accept": "application/json",
@@ -17,16 +18,21 @@ export const addStockistAction = (info: StockistInfo, user: User) => {
 				body: JSON.stringify(info),
 			});
 
+			if (res.status === 500)
+				throw 500;
+			
 			console.log("Just Pushed this Stockist", info);
+
+			dispatch<AddStockistAction>({
+				type: ActionTypes.StockAdd,
+				payload: info
+			});
 
 		} catch (err) {
 			console.log(err);
 		}
 
-		dispatch<AddStockistAction>({
-			type: ActionTypes.StockAdd,
-			payload: info
-		});
+
 	})
 
 };
